@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.diploma.tarotapplication.data.repo.TarotSystemRepository
-import ru.diploma.tarotapplication.ui.items.TarotSystemItem
+import ru.diploma.tarotapplication.ui.components.items.TarotSystemItem
 
 @Composable
 fun HomeScreen() {
