@@ -17,19 +17,19 @@ class GroupOfSuitsRepository {
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 )
             ),
             category_id = listOf(
@@ -37,19 +37,19 @@ class GroupOfSuitsRepository {
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 )
             ),
             card_image = R.drawable.rider_waite_tarot_system
@@ -64,19 +64,19 @@ class GroupOfSuitsRepository {
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 )
             ),
             category_id = listOf(
@@ -84,19 +84,19 @@ class GroupOfSuitsRepository {
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 )
             ),
             card_image = R.drawable.rider_waite_tarot_system
@@ -111,19 +111,19 @@ class GroupOfSuitsRepository {
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 )
             ),
             category_id = listOf(
@@ -131,19 +131,19 @@ class GroupOfSuitsRepository {
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 )
             ),
             card_image = R.drawable.rider_waite_tarot_system
@@ -158,19 +158,19 @@ class GroupOfSuitsRepository {
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 )
             ),
             category_id = listOf(
@@ -178,19 +178,19 @@ class GroupOfSuitsRepository {
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 )
             ),
             card_image = R.drawable.rider_waite_tarot_system
@@ -205,19 +205,19 @@ class GroupOfSuitsRepository {
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 )
             ),
             category_id = listOf(
@@ -225,19 +225,19 @@ class GroupOfSuitsRepository {
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 ),
                 Tags(
                     icon_id = 0,
                     tad_id = 0,
                     name = "   ",
-                    description = "String"
+                    value = "String"
                 )
             ),
             card_image = R.drawable.rider_waite_tarot_system

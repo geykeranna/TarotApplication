@@ -80,14 +80,6 @@ fun SuitsScreen() {
         count = pagesItems.size,
         state = pagerState,
     ) { page ->
-//        Box(Modifier.fillMaxSize()) {
-//            Text(
-//                modifier = Modifier.align(Alignment.Center),
-//                text = "Page $page",
-//                color = AccentColor
-//            )
-//        }
-
         LazyColumn(
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -101,20 +93,8 @@ fun SuitsScreen() {
                     suits[page].cardsLink.forEachIndexed { _, card ->
                         CardItem(item = card)
                     }
-
-//                    repeat(10){ index->
-//                        Text(modifier = Modifier.fillMaxWidth(),
-//                            text = "$page $index",
-//                            textAlign = TextAlign.Center)
-//                    }
-
                 }
             }
-//            items(items = suits) { suit  ->
-//
-//                Text(modifier = Modifier.size(itemSize), text = page.toString(), textAlign = TextAlign.Center)
-////
-//            }
         }
     }
 }
