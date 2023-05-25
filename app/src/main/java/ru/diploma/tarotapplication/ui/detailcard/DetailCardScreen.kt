@@ -1,8 +1,7 @@
-package ru.diploma.tarotapplication.ui.screens
+package ru.diploma.tarotapplication.ui.detailcard
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -23,20 +22,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.diploma.tarotapplication.data.model.Card
-import ru.diploma.tarotapplication.ui.components.items.CardInfoLongItems
-import ru.diploma.tarotapplication.ui.components.items.CardInfoShortItems
+import ru.diploma.tarotapplication.ui.detailcard.items.CardInfoLongItems
+import ru.diploma.tarotapplication.ui.detailcard.items.CardInfoShortItems
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
 
 @Composable
-fun CardInfoScreen(card: Card) {
+fun DetailCardScreen(card: Card) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundColor)
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top,
-
+        verticalArrangement = Arrangement.Top
     ) {
         Row(
             modifier = Modifier

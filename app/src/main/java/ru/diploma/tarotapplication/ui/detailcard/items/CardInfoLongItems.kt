@@ -1,4 +1,4 @@
-package ru.diploma.tarotapplication.ui.components.items
+package ru.diploma.tarotapplication.ui.detailcard.items
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image

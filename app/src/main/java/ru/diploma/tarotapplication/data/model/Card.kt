@@ -1,7 +1,7 @@
 package ru.diploma.tarotapplication.data.model
 
 data class Card(
-    val card_id: Int,
+    val id: Int,
     val card_number: Int,
     val card_name: String,
     val description: String,

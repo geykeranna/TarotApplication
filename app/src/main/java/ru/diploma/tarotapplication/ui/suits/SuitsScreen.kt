@@ -1,4 +1,4 @@
-package ru.diploma.tarotapplication.ui.screens
+package ru.diploma.tarotapplication.ui.suits
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,29 +10,37 @@ import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import androidx.navigation.compose.rememberNavController
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.*
+import androidx.navigation.compose.composable
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.flowlayout.SizeMode
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.launch
-import ru.diploma.tarotapplication.data.repo.GroupOfSuitsRepository
+import ru.diploma.tarotapplication.di.navigation.NavigationFactory
+import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
+import ru.diploma.tarotapplication.ui.MainActivity
 import ru.diploma.tarotapplication.ui.components.CustomIndicator
-import ru.diploma.tarotapplication.ui.components.items.CardItem
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
+import javax.inject.Inject
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun SuitsScreen() {
-    val suitsRepository = GroupOfSuitsRepository()
-    val suits = suitsRepository.getAllData()
+fun SuitsScreen(
+    navController: NavController,
+    viewModel: SuitsViewModel
+) {
+    val suits1 = viewModel.suitsData.collectAsState()
 
-    val pagesItems = suits.map { it.name }
+    val pagesItems = suits1.value.map { it.name }
+    val suits = suits1.value
 
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
@@ -91,7 +99,7 @@ fun SuitsScreen() {
                     mainAxisSpacing = 10.dp
                 ) {
                     suits[page].cardsLink.forEachIndexed { _, card ->
-                        CardItem(item = card)
+                        CardItem(item = card, navController = navController)
                     }
                 }
             }
@@ -107,8 +115,46 @@ object NoRippleTheme : RippleTheme {
     override fun rippleAlpha(): RippleAlpha = RippleAlpha(0.0f,0.0f,0.0f,0.0f)
 }
 
-@Preview(showBackground = true)
 @Composable
-fun Screen(){
-    SuitsScreen()
+fun groupOfSuitsViewModel(
+    systemId: Long
+): SuitsViewModel {
+    val factory = EntryPointAccessors.fromActivity(
+        LocalContext.current as MainActivity,
+        MainActivity.ViewModelFactoryProvider::class.java
+    ).itemSuitsViewModelFactory()
+
+    return viewModel(
+        factory = SuitsViewModel.provideFactory(
+            factory,
+            systemId = systemId
+        )
+    )
+}
+
+class SuitsScreenFactory @Inject constructor() : NavigationScreenFactory {
+    companion object Companion : NavigationFactory.NavigationFactoryCompanion {
+        private const val SYSTEM_ID_KEY = "systemId"
+    }
+
+    override val factoryType: List<NavigationFactory.NavigationFactoryType>
+        get() = listOf(NavigationFactory.NavigationFactoryType.Nested)
+
+    override fun create(builder: NavGraphBuilder, navGraph: NavHostController) {
+        builder.composable(
+            route = "$route/{${
+                SYSTEM_ID_KEY
+            }}",
+            arguments = listOf(navArgument(SYSTEM_ID_KEY) { type = NavType.LongType })
+        ) {
+            it.arguments?.getLong(SYSTEM_ID_KEY)?.let { systemId ->
+                SuitsScreen(
+                    navController = navGraph,
+                    viewModel = groupOfSuitsViewModel(
+                        systemId = systemId
+                    )
+                )
+            }
+        }
+    }
 }

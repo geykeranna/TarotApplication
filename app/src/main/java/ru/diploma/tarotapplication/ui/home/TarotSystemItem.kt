@@ -1,7 +1,8 @@
-package ru.diploma.tarotapplication.ui.components.items
+package ru.diploma.tarotapplication.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,17 +20,34 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.*
 import ru.diploma.tarotapplication.data.model.TarotSystem
+import ru.diploma.tarotapplication.ui.suits.SuitsScreenFactory
 import ru.diploma.tarotapplication.ui.theme.BackgroundItemColor
 
 @Composable
-fun TarotSystemItem(tarotSystem: TarotSystem) {
+fun TarotSystemItem(
+    tarotSystem: TarotSystem,
+    navController: NavController
+) {
     Row(
         modifier = Modifier
             .height(80.dp)
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(20.dp))
-            .background(BackgroundItemColor),
+            .background(BackgroundItemColor)
+            .clickable {
+                navController.navigate(SuitsScreenFactory.route + "/${tarotSystem.id}")
+//                with(navController) {
+//                    navigate("${SuitsScreenFactory.route}/${tarotSystem.id}") {
+//                        popUpTo(graph.startDestinationId) {
+//                            saveState = true
+//                        }
+//                        restoreState = true
+//                    }
+//                }
+            }
+        ,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(20.dp)
     ){

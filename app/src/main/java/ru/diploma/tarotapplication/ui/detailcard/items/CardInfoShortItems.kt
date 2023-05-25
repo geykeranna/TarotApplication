@@ -1,4 +1,4 @@
-package ru.diploma.tarotapplication.ui.components.items
+package ru.diploma.tarotapplication.ui.detailcard.items
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

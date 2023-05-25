@@ -16,6 +16,7 @@ import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationHostFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.navigation.NavItem
+import ru.diploma.tarotapplication.ui.suits.SuitsViewModel
 import ru.diploma.tarotapplication.ui.theme.TarotApplicationTheme
 import javax.inject.Inject
 
@@ -59,6 +60,7 @@ class MainActivity : ComponentActivity() {
     @EntryPoint
     @InstallIn(ActivityComponent::class)
     interface ViewModelFactoryProvider {
-        /* TODO */
+        fun itemSuitsViewModelFactory(): SuitsViewModel.Factory
+
     }
 }

@@ -9,6 +9,7 @@ import ru.diploma.tarotapplication.di.navigation.NavigationHostFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.home.HomeScreenFactory
 import ru.diploma.tarotapplication.ui.main.MainNavHostScreenFactory
+import ru.diploma.tarotapplication.ui.suits.SuitsScreenFactory
 import javax.inject.Singleton
 
 @Module
@@ -24,4 +25,9 @@ interface NavigationModule {
     @Binds
     @Singleton
     fun bindHomeScreenFactory(homeScreenFactory: HomeScreenFactory): NavigationScreenFactory
+
+    @IntoSet
+    @Binds
+    @Singleton
+    fun bindSuitsScreenFactory(suitsScreenFactory: SuitsScreenFactory): NavigationScreenFactory
 }

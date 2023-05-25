@@ -17,6 +17,5 @@ class TarotSystemRepository {
                 idImg = R.drawable.thoth_tarot_system
             )
         )
-
     }
 }
