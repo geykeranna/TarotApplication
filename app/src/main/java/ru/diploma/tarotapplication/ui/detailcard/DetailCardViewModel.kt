@@ -1,4 +1,4 @@
-package ru.diploma.tarotapplication.ui.suits
+package ru.diploma.tarotapplication.ui.detailcard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -10,56 +10,54 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import ru.diploma.tarotapplication.data.model.Card
 import ru.diploma.tarotapplication.data.model.GroupOfSuits
-import ru.diploma.tarotapplication.domain.repositories.GroupOfSuitsRepository
+import ru.diploma.tarotapplication.domain.repositories.CardRepository
 import ru.diploma.tarotapplication.ui.base.BaseEvent
 import ru.diploma.tarotapplication.ui.base.BaseViewModel
+import ru.diploma.tarotapplication.ui.suits.SuitsViewModel
 
-class SuitsViewModel @AssistedInject constructor (
+
+class DetailCardViewModel @AssistedInject constructor(
     @Assisted
-    private val systemId: Long,
-    private val groupOfSuitsRepository: GroupOfSuitsRepository
-    ) : BaseViewModel<SuitsViewModel.Event>() {
+    private val cardId: Long,
+    private val cardRepository: CardRepository
+) : BaseViewModel<SuitsViewModel.Event>() {
 
-    val suitsData: StateFlow<List<GroupOfSuits>>
-        get() = _groupOfSuitsData.asStateFlow()
+    val cardData: StateFlow<Card>
+        get() = _cardData.asStateFlow()
 
-    private val _groupOfSuitsData = MutableStateFlow(GroupOfSuits.shimmerData)
+    private val _cardData = MutableStateFlow(Card.shimmerData)
 
     private fun startLoading(systemId: Long) = viewModelScope.launch {
-        _groupOfSuitsData.emit(groupOfSuitsRepository.getGroupByID(0))
+        _cardData.emit(cardRepository.getCardByID(0))
     }
 
     sealed class Event : BaseEvent() {
-        class OnLoadingStarted(val systemId: Long) : Event()
+        class OnLoadingStarted(val cardId: Long) : Event()
+    }
+
+    override fun obtainEvent(event: SuitsViewModel.Event) {
+        TODO("Not yet implemented")
     }
 
     @AssistedFactory
     interface Factory {
         fun create(
             walletId: Long
-        ): SuitsViewModel
+        ): DetailCardViewModel
     }
 
     @Suppress("UNCHECKED_CAST")
     companion object {
         fun provideFactory(
-            assistedFactory: Factory,
-            systemId: Long
+            assistedFactory: DetailCardViewModel.Factory,
+            cardId: Long
         ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return assistedFactory.create(
-                    systemId
+                    cardId
                 ) as T
-            }
-        }
-    }
-
-    override fun obtainEvent(event: Event) {
-        TODO("Not yet implemented")
-        when (event) {
-            is Event.OnLoadingStarted -> {
-
             }
         }
     }

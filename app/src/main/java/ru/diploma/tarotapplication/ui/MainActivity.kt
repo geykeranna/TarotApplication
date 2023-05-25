@@ -15,6 +15,7 @@ import ru.diploma.tarotapplication.data.extentions.filter
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationHostFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
+import ru.diploma.tarotapplication.ui.detailcard.DetailCardViewModel
 import ru.diploma.tarotapplication.ui.navigation.NavItem
 import ru.diploma.tarotapplication.ui.suits.SuitsViewModel
 import ru.diploma.tarotapplication.ui.theme.TarotApplicationTheme
@@ -62,5 +63,6 @@ class MainActivity : ComponentActivity() {
     interface ViewModelFactoryProvider {
         fun itemSuitsViewModelFactory(): SuitsViewModel.Factory
 
+        fun itemCardViewModelFactory(): DetailCardViewModel.Factory
     }
 }

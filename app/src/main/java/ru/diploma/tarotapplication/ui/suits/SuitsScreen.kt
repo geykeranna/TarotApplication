@@ -28,6 +28,7 @@ import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
 import ru.diploma.tarotapplication.ui.components.CustomIndicator
+import ru.diploma.tarotapplication.ui.components.SearchBar
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
 import javax.inject.Inject
 
@@ -49,62 +50,67 @@ fun SuitsScreen(
         CustomIndicator(tabPositions, pagerState)
     }
 
-    CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
-        ScrollableTabRow(
-            modifier = Modifier
-                .height(50.dp),
-            selectedTabIndex = pagerState.currentPage,
-            indicator = indicator,
-            backgroundColor = BackgroundColor,
-        ) {
-            pagesItems.forEachIndexed { index, title ->
-                Tab(
-                    modifier = Modifier.zIndex(6f),
-                    text = {
-                        Text(
-                            text = title,
-                            color = Color.White
-                        )
-                    },
-                    //TODO : сделать иконки вместо текста
+    Column {
+        SearchBar()
+
+        CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
+            ScrollableTabRow(
+                modifier = Modifier
+                    .height(50.dp),
+                selectedTabIndex = pagerState.currentPage,
+                indicator = indicator,
+                backgroundColor = BackgroundColor,
+            ) {
+                pagesItems.forEachIndexed { index, title ->
+                    Tab(
+                        modifier = Modifier.zIndex(6f),
+                        text = {
+                            Text(
+                                text = title,
+                                color = Color.White
+                            )
+                        },
+                        //TODO : сделать иконки вместо текста
 //                    icon = {
 //                           Icon(painter = painterResource(R.drawable.cups), contentDescription = null)
 //                    },
-                    selected = pagerState.currentPage == index,
-                    onClick = {
-                        scope.launch {
-                            pagerState.scrollToPage(index)
+                        selected = pagerState.currentPage == index,
+                        onClick = {
+                            scope.launch {
+                                pagerState.scrollToPage(index)
+                            }
                         }
-                    }
-                )
+                    )
+                }
             }
         }
-    }
 
-    HorizontalPager(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = BackgroundColor),
-        count = pagesItems.size,
-        state = pagerState,
-    ) { page ->
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            item {
-                FlowRow(
-                    modifier = Modifier.fillMaxSize(),
-                    mainAxisSize = SizeMode.Expand,
-                    mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
-                    mainAxisSpacing = 10.dp
-                ) {
-                    suits[page].cardsLink.forEachIndexed { _, card ->
-                        CardItem(item = card, navController = navController)
+        HorizontalPager(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = BackgroundColor),
+            count = pagesItems.size,
+            state = pagerState,
+        ) { page ->
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                item {
+                    FlowRow(
+                        modifier = Modifier.fillMaxSize(),
+                        mainAxisSize = SizeMode.Expand,
+                        mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
+                        mainAxisSpacing = 10.dp
+                    ) {
+                        suits[page].cardsLink.forEachIndexed { _, card ->
+                            CardItem(item = card, navController = navController)
+                        }
                     }
                 }
             }
         }
     }
+
 }
 
 object NoRippleTheme : RippleTheme {

@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import ru.diploma.tarotapplication.data.model.Card
+import ru.diploma.tarotapplication.ui.detailcard.DetailCardScreenFactory
 import ru.diploma.tarotapplication.ui.theme.LightAccentColor
 
 @Composable
@@ -29,7 +30,7 @@ fun CardItem(
             .width(110.dp)
             .padding(vertical = 10.dp)
             .clickable {
-                navController.navigate(SuitsScreenFactory.route + "/${item.id}")
+                navController.navigate(DetailCardScreenFactory.route + "/${item.id}")
             },
         verticalArrangement = Arrangement.spacedBy(6.dp),
         horizontalAlignment = Alignment.CenterHorizontally

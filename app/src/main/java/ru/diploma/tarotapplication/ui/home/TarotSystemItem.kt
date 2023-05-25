@@ -38,14 +38,6 @@ fun TarotSystemItem(
             .background(BackgroundItemColor)
             .clickable {
                 navController.navigate(SuitsScreenFactory.route + "/${tarotSystem.id}")
-//                with(navController) {
-//                    navigate("${SuitsScreenFactory.route}/${tarotSystem.id}") {
-//                        popUpTo(graph.startDestinationId) {
-//                            saveState = true
-//                        }
-//                        restoreState = true
-//                    }
-//                }
             }
         ,
         verticalAlignment = Alignment.CenterVertically,

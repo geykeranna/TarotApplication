@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
 import ru.diploma.tarotapplication.di.navigation.NavigationHostFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
+import ru.diploma.tarotapplication.ui.detailcard.DetailCardScreenFactory
 import ru.diploma.tarotapplication.ui.home.HomeScreenFactory
 import ru.diploma.tarotapplication.ui.main.MainNavHostScreenFactory
 import ru.diploma.tarotapplication.ui.suits.SuitsScreenFactory
@@ -30,4 +31,9 @@ interface NavigationModule {
     @Binds
     @Singleton
     fun bindSuitsScreenFactory(suitsScreenFactory: SuitsScreenFactory): NavigationScreenFactory
+
+    @IntoSet
+    @Binds
+    @Singleton
+    fun bindDetailCardScreenFactory(detailCardScreenFactory: DetailCardScreenFactory): NavigationScreenFactory
 }

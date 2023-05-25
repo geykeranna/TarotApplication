@@ -52,16 +52,3 @@ fun CardInfoShortItems(
         )
     }
 }
-
-@Composable
-@Preview(showBackground = true)
-fun showView(){
-    val tags = Tags(
-        tad_id = 0,
-        icon_id = R.drawable.cups,
-        name = "Знак зодиака",
-        value = "Овен"
-    )
-    
-    CardInfoShortItems(tag = tags)
-}
