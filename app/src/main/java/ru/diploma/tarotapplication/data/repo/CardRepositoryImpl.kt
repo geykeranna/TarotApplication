@@ -148,7 +148,7 @@ class CardRepositoryImpl @Inject constructor(
                 value = "Посмотреть на вещи более серьезно . Не оставлять дела на самотек."
             )
         ),
-        card_image = R.drawable.ex1
+        card_image = R.drawable.major00
     )
 
     override suspend fun getCardByID(id: Long): Card = card

@@ -1,6 +1,7 @@
 package ru.diploma.tarotapplication.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -11,6 +12,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import ru.diploma.tarotapplication.ui.theme.AccentColor
+import ru.diploma.tarotapplication.ui.theme.BackgroundColor
+import ru.diploma.tarotapplication.ui.theme.DarkAccentColor
 import ru.diploma.tarotapplication.ui.theme.LightAccentColor
 
 @Composable
@@ -19,15 +23,21 @@ fun SearchBar() {
         mutableStateOf("")
     }
 
+    var vectorColor by remember {
+        mutableStateOf(BackgroundColor)
+    }
+
     OutlinedTextField(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 20.dp),
+            .height(100.dp)
+            .padding(top = 40.dp, bottom = 10.dp, start = 20.dp, end = 20.dp),
         value = value,
         onValueChange = { newText ->
             value = newText },
         leadingIcon = {
             Icon(
+                modifier = Modifier.padding(start = 15.dp),
                 imageVector = Icons.Filled.Search,
                 contentDescription = "Search Icon",
                 tint = Color.White.copy(
@@ -35,18 +45,9 @@ fun SearchBar() {
                 )
             )
         },
-        trailingIcon = {
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(
-                    imageVector = Icons.Filled.Close,
-                    contentDescription = "Close Icon",
-                    tint = Color.White
-                )
-            }
-        },
         shape = RoundedCornerShape(40.dp),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            unfocusedBorderColor = LightAccentColor,
+            unfocusedBorderColor = DarkAccentColor,
             focusedBorderColor = LightAccentColor,
             cursorColor = LightAccentColor,
             textColor = Color.White

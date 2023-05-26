@@ -51,37 +51,12 @@ fun DetailCardScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(60.dp)
-                .padding(horizontal = 20.dp)
-                .padding(top = 20.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ){
-            //TODO onClick
-            IconButton(onClick = {     }){
-                Icon(
-                    painter = painterResource(R.drawable.ic_back),
-                    contentDescription = "",
-                    tint = Color.White
-                )
-            }
-            IconButton(onClick = {  }){
-                Icon(
-                    painter = painterResource(R.drawable.ic_favourite),
-                    contentDescription = "",
-                    tint = Color.White
-                )
-            }
-        }
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(90.dp)
-                .padding(vertical = 20.dp),
-            text = "${card.card_number} ${card.card_name}",
+                .height(100.dp)
+                .padding(bottom = 20.dp, top = 40.dp),
+            text = card.card_name,
             textAlign = TextAlign.Center,
             fontSize = 38.sp,
             color = Color.White
@@ -92,7 +67,8 @@ fun DetailCardScreen(
                 .height(300.dp)
                 .padding(vertical = 20.dp),
             painter = painterResource(id = card.card_image),
-            contentDescription = "")
+            contentDescription = ""
+        )
         Text(
             text = card.description,
             textAlign = TextAlign.Center,

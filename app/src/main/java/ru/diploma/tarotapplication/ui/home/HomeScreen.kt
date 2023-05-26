@@ -1,6 +1,7 @@
 package ru.diploma.tarotapplication.ui.home
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -12,9 +13,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import ru.diploma.tarotapplication.data.repo.TarotSystemRepositoryImpl
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
+import ru.diploma.tarotapplication.ui.components.SearchBar
 import javax.inject.Inject
 
 @Composable
@@ -24,17 +25,22 @@ fun HomeScreen(
 ) {
     val data = mainViewModel.systemData.collectAsState().value
 
-    LazyColumn(
-        contentPadding = PaddingValues(all = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ){
-        items(items=data) {system ->
-            TarotSystemItem(
-                tarotSystem = system,
-                navController = navController
-            )
+    Column {
+        SearchBar()
+
+        LazyColumn(
+            contentPadding = PaddingValues(all = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ){
+            items(items=data) {system ->
+                TarotSystemItem(
+                    tarotSystem = system,
+                    navController = navController
+                )
+            }
         }
     }
+
 }
 
 class HomeScreenFactory @Inject constructor() : NavigationScreenFactory {

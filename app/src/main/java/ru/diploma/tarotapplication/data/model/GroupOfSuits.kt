@@ -6,41 +6,18 @@ data class GroupOfSuits(
     val id: Long,
     val name: String,
     val idImg: Int,
-    val cardsLink: List<Card>
+    val cardsLink: List<ShortCard>
 )
 {
     companion object {
-        private var card = Card(
+        private var card = ShortCard(
             id = 0,
-            card_number = 1,
+            id_card = 0,
+            card_number = 0,
             card_name = "",
-            description = "",
-            tag_id = listOf(
-                Tags(
-                    tad_id = 0,
-                    icon_id = 0,
-                    name = "",
-                    value = ""
-                )
-            ),
-            category_id = listOf(
-                Tags(
-                    icon_id = 0,
-                    tad_id = 0,
-                    name = "",
-                    value = ""
-                )
-            ),
-            category_id_reverse = listOf(
-                Tags(
-                    icon_id = 0,
-                    tad_id = 0,
-                    name = "",
-                    value = ""
-                )
-            ),
-            card_image = R.drawable.rider_waite_tarot_system
+            id_img = 0,
         )
+
         val shimmerData = listOf(
             GroupOfSuits(
                 id = 4,

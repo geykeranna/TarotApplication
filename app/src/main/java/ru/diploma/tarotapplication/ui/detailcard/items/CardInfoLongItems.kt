@@ -23,13 +23,13 @@ fun CardInfoLongItems(
 ){
     Row(modifier = Modifier
         .fillMaxSize()
-        .padding(vertical = 5.dp, horizontal = 10.dp)
+        .padding(vertical = 8.dp, horizontal = 10.dp)
         .clip(shape = RoundedCornerShape(20.dp)),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
             modifier = Modifier
-                .padding(top = 10.dp),
+                .padding(top = 10.dp, end = 20.dp),
             painter = painterResource(id = tag.icon_id),
             contentDescription = tag.name
         )
@@ -42,17 +42,16 @@ fun CardInfoLongItems(
                 modifier = Modifier.padding(bottom = 5.dp),
                 text = tag.name,
                 textAlign = TextAlign.Center,
-                fontSize = 16.sp,
+                fontSize = 22.sp,
                 color = Color.White,
             )
 
             Text(
                 modifier = Modifier
                     .padding(top = 5.dp)
-                    .fillMaxHeight()
-                ,
+                    .fillMaxHeight(),
                 text = tag.value,
-                textAlign = TextAlign.Center,
+                textAlign = TextAlign.Start,
                 fontSize = 16.sp,
                 color = Color.White,
             )

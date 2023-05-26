@@ -3,8 +3,11 @@ package ru.diploma.tarotapplication.data.repo
 import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.data.model.TarotSystem
 import ru.diploma.tarotapplication.domain.repositories.TarotSystemRepository
+import javax.inject.Inject
 
-class TarotSystemRepositoryImpl : TarotSystemRepository {
+class TarotSystemRepositoryImpl @Inject constructor(
+
+) : TarotSystemRepository {
 
     override suspend fun getSystemList(): List<TarotSystem> {
         return listOf(

@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.diploma.tarotapplication.data.model.TarotSystem
-import ru.diploma.tarotapplication.data.repo.TarotSystemRepositoryImpl
 import ru.diploma.tarotapplication.domain.repositories.TarotSystemRepository
 import ru.diploma.tarotapplication.ui.base.BaseEvent
 import ru.diploma.tarotapplication.ui.base.BaseViewModel

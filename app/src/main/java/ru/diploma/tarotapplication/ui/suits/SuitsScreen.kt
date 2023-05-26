@@ -54,7 +54,8 @@ fun SuitsScreen(
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
             ScrollableTabRow(
                 modifier = Modifier
-                    .height(50.dp),
+                    .height(70.dp)
+                    .padding(vertical = 10.dp),
                 selectedTabIndex = pagerState.currentPage,
                 indicator = indicator,
                 backgroundColor = BackgroundColor,
@@ -91,7 +92,9 @@ fun SuitsScreen(
             state = pagerState,
         ) { page ->
             LazyColumn(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 15.dp)
             ) {
                 item {
                     FlowRow(
@@ -101,7 +104,10 @@ fun SuitsScreen(
                         mainAxisSpacing = 10.dp
                     ) {
                         suits[page].cardsLink.forEachIndexed { _, card ->
-                            CardItem(item = card, navController = navController)
+                            CardItem(
+                                item = card,
+                                navController = navController
+                            )
                         }
                     }
                 }

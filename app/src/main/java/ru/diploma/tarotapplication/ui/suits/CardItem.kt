@@ -12,25 +12,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import ru.diploma.tarotapplication.data.model.Card
+import ru.diploma.tarotapplication.data.model.ShortCard
 import ru.diploma.tarotapplication.ui.detailcard.DetailCardScreenFactory
 import ru.diploma.tarotapplication.ui.theme.LightAccentColor
 
 @Composable
 fun CardItem(
-    item: Card,
+    item: ShortCard,
     navController: NavController
 ) {
     Column(
         modifier = Modifier
-            .height(260.dp)
+            .height(240.dp)
             .width(110.dp)
-            .padding(vertical = 10.dp)
+            .padding(vertical = 2.dp)
             .clickable {
-                navController.navigate(DetailCardScreenFactory.route + "/${item.id}")
+                navController.navigate(DetailCardScreenFactory.route + "/${item.id_card}")
             },
         verticalArrangement = Arrangement.spacedBy(6.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -39,9 +41,8 @@ fun CardItem(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(vertical = 15.dp)
-                .clip(shape = RoundedCornerShape(25.dp))
-                .background(LightAccentColor),
+                .padding(vertical = 8.dp)
+                .clip(shape = RoundedCornerShape(25.dp)),
             verticalArrangement = Arrangement.spacedBy(6.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -50,13 +51,15 @@ fun CardItem(
                     .fillMaxWidth()
                     .height(160.dp)
                     .padding(top = 10.dp),
-                painter = painterResource(id = item.card_image),
+                painter = painterResource(id = item.id_img),
                 contentDescription = ""
             )
             Text(
+                modifier = Modifier.padding(horizontal = 3.dp),
                 text = item.card_name,
-                fontSize = 20.sp,
-                color = Color.Black,
+                fontSize = 18.sp,
+                color = Color.White,
+                textAlign = TextAlign.Center
             )
         }
 
