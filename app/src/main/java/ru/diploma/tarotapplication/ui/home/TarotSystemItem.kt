@@ -59,12 +59,10 @@ fun TarotSystemItem(
             fontWeight = FontWeight.Normal
         )
         Spacer(modifier = Modifier.weight(1f))
-
         Icon(
             Icons.Rounded.Favorite,
             tint = Color.Red,
             contentDescription = "Favorite Icon")
-
         Spacer(modifier = Modifier.width(3.dp))
     }
 }

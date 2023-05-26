@@ -38,10 +38,8 @@ fun SuitsScreen(
     navController: NavController,
     viewModel: SuitsViewModel
 ) {
-    val suits1 = viewModel.suitsData.collectAsState()
-
-    val pagesItems = suits1.value.map { it.name }
-    val suits = suits1.value
+    val suits = viewModel.suitsData.collectAsState().value
+    val pagesItems = suits.map { it.name }
 
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()

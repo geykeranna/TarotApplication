@@ -22,36 +22,46 @@ class DetailCardViewModel @AssistedInject constructor(
     @Assisted
     private val cardId: Long,
     private val cardRepository: CardRepository
-) : BaseViewModel<SuitsViewModel.Event>() {
+) : BaseViewModel<DetailCardViewModel.Event>() {
 
     val cardData: StateFlow<Card>
         get() = _cardData.asStateFlow()
 
     private val _cardData = MutableStateFlow(Card.shimmerData)
 
-    private fun startLoading(systemId: Long) = viewModelScope.launch {
-        _cardData.emit(cardRepository.getCardByID(0))
+    private fun startLoading(cardId: Long) = viewModelScope.launch {
+        _cardData.emit(cardRepository.getCardByID(cardId))
+    }
+
+    override fun obtainEvent(event: Event) {
+        when (event) {
+            is Event.OnLoadingStarted -> {
+                startLoading(cardId = event.cardId)
+            }
+        }
+    }
+
+    init {
+        viewModelScope.launch {
+            obtainEvent(Event.OnLoadingStarted(cardId = cardId))
+        }
     }
 
     sealed class Event : BaseEvent() {
         class OnLoadingStarted(val cardId: Long) : Event()
     }
 
-    override fun obtainEvent(event: SuitsViewModel.Event) {
-        TODO("Not yet implemented")
-    }
-
     @AssistedFactory
     interface Factory {
         fun create(
-            walletId: Long
+            cardId: Long
         ): DetailCardViewModel
     }
 
     @Suppress("UNCHECKED_CAST")
     companion object {
         fun provideFactory(
-            assistedFactory: DetailCardViewModel.Factory,
+            assistedFactory: Factory,
             cardId: Long
         ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {

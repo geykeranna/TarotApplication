@@ -41,57 +41,7 @@ import javax.inject.Inject
 fun DetailCardScreen(
     viewModel: DetailCardViewModel
 ) {
-    val cardInfo = viewModel.cardData.collectAsState()
-
-    // val card = cardInfo.value
-
-    val card = Card(
-        id = 0,
-        card_number = 1,
-        card_name = "Card",
-        description = "All u need is money",
-        tag_id = listOf(
-            Tags(
-                icon_id = R.drawable.ic_favourite,
-                tad_id = 0,
-                name = "   ",
-                value = "String"
-            ),
-            Tags(
-                icon_id = R.drawable.ic_favourite,
-                tad_id = 0,
-                name = "   ",
-                value = "String"
-            ),
-            Tags(
-                icon_id = R.drawable.ic_favourite,
-                tad_id = 0,
-                name = "   ",
-                value = "String"
-            )
-        ),
-        category_id = listOf(
-            Tags(
-                icon_id = R.drawable.ic_favourite,
-                tad_id = 0,
-                name = "   ",
-                value = "String"
-            ),
-            Tags(
-                icon_id = R.drawable.ic_favourite,
-                tad_id = 0,
-                name = "   ",
-                value = "String"
-            ),
-            Tags(
-                icon_id = R.drawable.ic_favourite,
-                tad_id = 0,
-                name = "   ",
-                value = "String"
-            )
-        ),
-        card_image = R.drawable.rider_waite_tarot_system
-    )
+    val card = viewModel.cardData.collectAsState().value
 
     Column(
         modifier = Modifier
@@ -111,7 +61,7 @@ fun DetailCardScreen(
             verticalAlignment = Alignment.CenterVertically
         ){
             //TODO onClick
-            IconButton(onClick = {  }){
+            IconButton(onClick = {     }){
                 Icon(
                     painter = painterResource(R.drawable.ic_back),
                     contentDescription = "",

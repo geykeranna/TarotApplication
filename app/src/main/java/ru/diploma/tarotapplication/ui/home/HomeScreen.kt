@@ -5,13 +5,14 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import ru.diploma.tarotapplication.data.repo.TarotSystemRepository
+import ru.diploma.tarotapplication.data.repo.TarotSystemRepositoryImpl
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import javax.inject.Inject
@@ -21,8 +22,7 @@ fun HomeScreen(
     navController: NavController,
     mainViewModel: HomeViewModel = hiltViewModel()
 ) {
-    val systemRepository = TarotSystemRepository()
-    val data = systemRepository.getAllData()
+    val data = mainViewModel.systemData.collectAsState().value
 
     LazyColumn(
         contentPadding = PaddingValues(all = 20.dp),
@@ -33,7 +33,6 @@ fun HomeScreen(
                 tarotSystem = system,
                 navController = navController
             )
-            /* TODO НАВИГАЦИЯ С ITEM */
         }
     }
 }

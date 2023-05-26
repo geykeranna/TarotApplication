@@ -19,7 +19,7 @@ class SuitsViewModel @AssistedInject constructor (
     @Assisted
     private val systemId: Long,
     private val groupOfSuitsRepository: GroupOfSuitsRepository
-    ) : BaseViewModel<SuitsViewModel.Event>() {
+) : BaseViewModel<SuitsViewModel.Event>() {
 
     val suitsData: StateFlow<List<GroupOfSuits>>
         get() = _groupOfSuitsData.asStateFlow()
@@ -27,17 +27,21 @@ class SuitsViewModel @AssistedInject constructor (
     private val _groupOfSuitsData = MutableStateFlow(GroupOfSuits.shimmerData)
 
     private fun startLoading(systemId: Long) = viewModelScope.launch {
-        _groupOfSuitsData.emit(groupOfSuitsRepository.getGroupByID(0))
+        _groupOfSuitsData.emit(groupOfSuitsRepository.getGroupByID(systemId))
     }
 
     sealed class Event : BaseEvent() {
         class OnLoadingStarted(val systemId: Long) : Event()
     }
 
+    init {
+        obtainEvent(Event.OnLoadingStarted(systemId))
+    }
+
     @AssistedFactory
     interface Factory {
         fun create(
-            walletId: Long
+            systemId: Long
         ): SuitsViewModel
     }
 
@@ -56,10 +60,9 @@ class SuitsViewModel @AssistedInject constructor (
     }
 
     override fun obtainEvent(event: Event) {
-        TODO("Not yet implemented")
         when (event) {
             is Event.OnLoadingStarted -> {
-
+                startLoading(systemId = event.systemId)
             }
         }
     }
