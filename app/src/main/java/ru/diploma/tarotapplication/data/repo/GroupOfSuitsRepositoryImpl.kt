@@ -7,7 +7,6 @@ import ru.diploma.tarotapplication.domain.repositories.GroupOfSuitsRepository
 import javax.inject.Inject
 
 class GroupOfSuitsRepositoryImpl @Inject constructor(
-
 ) : GroupOfSuitsRepository {
 
     private val shortsCardInfoMajor = listOf(
@@ -571,38 +570,53 @@ class GroupOfSuitsRepositoryImpl @Inject constructor(
         )
     )
 
-    override suspend fun getGroupByID(id: Long) : List<GroupOfSuits> {
-        return listOf(
-            GroupOfSuits(
-                id = 1001500,
-                name = "Старшие арканы",
-                idImg = R.drawable.major_arcana,
-                cardsLink = shortsCardInfoMajor
-            ),
-            GroupOfSuits(
-                id = 1001501,
-                name = "Жезлы",
-                idImg = R.drawable.wands,
-                cardsLink = shortsCardInfoWands
-            ),
-            GroupOfSuits(
-                id = 1001502,
-                name = "Кубки",
-                idImg = R.drawable.cups,
-                cardsLink = shortsCardInfoCups
-            ),
-            GroupOfSuits(
-                id = 1001503,
-                name = "Мечи",
-                idImg = R.drawable.swords,
-                cardsLink = shortsCardInfoSword
-            ),
-            GroupOfSuits(
-                id = 1001504,
-                name = "Пентакли",
-                idImg = R.drawable.pentacles,
-                cardsLink = shortsCardInfoPentacles
-            )
+    private val listOfCard = listOf(
+        GroupOfSuits(
+            id = 1001500,
+            name = "Старшие арканы",
+            idImg = R.drawable.major_arcana,
+            cardsLink = shortsCardInfoMajor
+        ),
+        GroupOfSuits(
+            id = 1001501,
+            name = "Жезлы",
+            idImg = R.drawable.wands,
+            cardsLink = shortsCardInfoWands
+        ),
+        GroupOfSuits(
+            id = 1001502,
+            name = "Кубки",
+            idImg = R.drawable.cups,
+            cardsLink = shortsCardInfoCups
+        ),
+        GroupOfSuits(
+            id = 1001503,
+            name = "Мечи",
+            idImg = R.drawable.swords,
+            cardsLink = shortsCardInfoSword
+        ),
+        GroupOfSuits(
+            id = 1001504,
+            name = "Пентакли",
+            idImg = R.drawable.pentacles,
+            cardsLink = shortsCardInfoPentacles
         )
+    )
+
+    override suspend fun getGroupByID(id: Long) : List<GroupOfSuits> = listOfCard
+
+    override suspend fun getCardsBySearchString(name: String): List<ShortCard> {
+        val mutableCardList = mutableListOf<ShortCard>()
+
+        listOfCard.forEach{ card ->
+            card.cardsLink.forEach{ shortCard ->
+                if (shortCard.card_name.contains(name, ignoreCase = true)
+                    || shortCard.name_tarot_system.contains(name, ignoreCase = true)
+                    || shortCard.name_suits.contains(name, ignoreCase = true)
+                ) mutableCardList.add(shortCard)
+            }
+        }
+
+        return mutableCardList
     }
 }

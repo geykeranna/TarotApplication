@@ -1,4 +1,4 @@
-package ru.diploma.tarotapplication.ui.components
+package ru.diploma.tarotapplication.ui.search
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height

@@ -17,6 +17,7 @@ import ru.diploma.tarotapplication.di.navigation.NavigationHostFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.detailcard.DetailCardViewModel
 import ru.diploma.tarotapplication.ui.navigation.NavItem
+import ru.diploma.tarotapplication.ui.search.SearchViewModel
 import ru.diploma.tarotapplication.ui.suits.SuitsViewModel
 import ru.diploma.tarotapplication.ui.theme.TarotApplicationTheme
 import javax.inject.Inject
@@ -64,5 +65,7 @@ class MainActivity : ComponentActivity() {
         fun itemSuitsViewModelFactory(): SuitsViewModel.Factory
 
         fun itemCardViewModelFactory(): DetailCardViewModel.Factory
+
+        fun itemSearchViewModelFactory(): SearchViewModel.Factory
     }
 }

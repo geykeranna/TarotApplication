@@ -1,8 +1,6 @@
 package ru.diploma.tarotapplication.ui.detailcard.items
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
@@ -52,7 +50,7 @@ fun CardInfoLongItems(
                     .fillMaxHeight(),
                 text = tag.value,
                 textAlign = TextAlign.Start,
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 color = Color.White,
             )
         }

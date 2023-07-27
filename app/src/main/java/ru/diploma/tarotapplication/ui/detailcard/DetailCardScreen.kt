@@ -5,9 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import ru.diploma.tarotapplication.R
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.lazy.items
@@ -27,8 +24,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.composable
 import dagger.hilt.android.EntryPointAccessors
-import ru.diploma.tarotapplication.data.model.Card
-import ru.diploma.tarotapplication.data.model.Tags
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
@@ -79,9 +74,9 @@ fun DetailCardScreen(
 
         LazyRow(
             modifier = Modifier
-                .height(200.dp)
+                .height(210.dp)
                 .fillMaxWidth()
-                .padding(vertical = 40.dp, horizontal = 10.dp)
+                .padding(vertical = 20.dp, horizontal = 10.dp)
         ){
             items (items=card.tag_id) { tag ->
                 CardInfoShortItems(tag = tag)
@@ -90,7 +85,7 @@ fun DetailCardScreen(
 
         LazyColumn(
             modifier = Modifier
-                .padding(10.dp)
+                .padding(5.dp)
                 .heightIn(min = 10.dp, max = 900.dp)
             ,
         ){

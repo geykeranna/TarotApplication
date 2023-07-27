@@ -11,12 +11,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.diploma.tarotapplication.data.model.Card
-import ru.diploma.tarotapplication.data.model.GroupOfSuits
 import ru.diploma.tarotapplication.domain.repositories.CardRepository
 import ru.diploma.tarotapplication.ui.base.BaseEvent
 import ru.diploma.tarotapplication.ui.base.BaseViewModel
-import ru.diploma.tarotapplication.ui.suits.SuitsViewModel
-
 
 class DetailCardViewModel @AssistedInject constructor(
     @Assisted
@@ -57,7 +54,6 @@ class DetailCardViewModel @AssistedInject constructor(
             cardId: Long
         ): DetailCardViewModel
     }
-
     @Suppress("UNCHECKED_CAST")
     companion object {
         fun provideFactory(

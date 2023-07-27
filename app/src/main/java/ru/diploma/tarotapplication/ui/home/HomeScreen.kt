@@ -15,7 +15,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
-import ru.diploma.tarotapplication.ui.components.SearchBar
+import ru.diploma.tarotapplication.ui.search.LabelSearchComponents
 import javax.inject.Inject
 
 @Composable
@@ -26,7 +26,7 @@ fun HomeScreen(
     val data = mainViewModel.systemData.collectAsState().value
 
     Column {
-        SearchBar()
+        LabelSearchComponents()
 
         LazyColumn(
             contentPadding = PaddingValues(all = 20.dp),
@@ -49,9 +49,9 @@ class HomeScreenFactory @Inject constructor() : NavigationScreenFactory {
     override val factoryType: List<NavigationFactory.NavigationFactoryType>
         get() = listOf(NavigationFactory.NavigationFactoryType.Nested)
 
-    override fun create(builder: NavGraphBuilder, navController: NavHostController) {
+    override fun create(builder: NavGraphBuilder, navGraph: NavHostController) {
         builder.composable(route = route) {
-            HomeScreen(navController)
+            HomeScreen(navGraph)
         }
     }
 }

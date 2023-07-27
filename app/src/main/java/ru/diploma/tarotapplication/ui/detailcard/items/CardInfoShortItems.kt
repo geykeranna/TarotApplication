@@ -1,7 +1,6 @@
 package ru.diploma.tarotapplication.ui.detailcard.items
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -14,7 +13,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.diploma.tarotapplication.data.model.Tags
-import ru.diploma.tarotapplication.ui.theme.BackgroundColor
 
 @Composable
 fun CardInfoShortItems(
@@ -39,8 +37,7 @@ fun CardInfoShortItems(
         )
         Text(
             modifier = Modifier
-                .padding(vertical = 5.dp)
-            ,
+                .padding(vertical = 8.dp),
             text = tag.name,
             textAlign = TextAlign.Center,
             fontSize = 18.sp,

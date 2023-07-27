@@ -28,7 +28,7 @@ import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
 import ru.diploma.tarotapplication.ui.components.CustomIndicator
-import ru.diploma.tarotapplication.ui.components.SearchBar
+import ru.diploma.tarotapplication.ui.search.SearchBar
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
 import javax.inject.Inject
 
