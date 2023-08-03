@@ -10,7 +10,6 @@ import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.detailcard.DetailCardScreenFactory
 import ru.diploma.tarotapplication.ui.home.HomeScreenFactory
 import ru.diploma.tarotapplication.ui.main.MainNavHostScreenFactory
-import ru.diploma.tarotapplication.ui.search.SearchViewFactory
 import ru.diploma.tarotapplication.ui.suits.SuitsScreenFactory
 import javax.inject.Singleton
 
@@ -36,9 +35,4 @@ interface NavigationModule {
     @Binds
     @Singleton
     fun bindDetailCardScreenFactory(detailCardScreenFactory: DetailCardScreenFactory): NavigationScreenFactory
-
-    @IntoSet
-    @Binds
-    @Singleton
-    fun bindSearchViewFactory(searchViewFactory: SearchViewFactory): NavigationScreenFactory
 }

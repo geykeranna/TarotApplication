@@ -1,7 +1,6 @@
 package ru.diploma.tarotapplication.ui
 
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Surface
@@ -17,7 +16,6 @@ import ru.diploma.tarotapplication.di.navigation.NavigationHostFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.detailcard.DetailCardViewModel
 import ru.diploma.tarotapplication.ui.navigation.NavItem
-import ru.diploma.tarotapplication.ui.search.SearchViewModel
 import ru.diploma.tarotapplication.ui.suits.SuitsViewModel
 import ru.diploma.tarotapplication.ui.theme.TarotApplicationTheme
 import javax.inject.Inject
@@ -65,7 +63,5 @@ class MainActivity : ComponentActivity() {
         fun itemSuitsViewModelFactory(): SuitsViewModel.Factory
 
         fun itemCardViewModelFactory(): DetailCardViewModel.Factory
-
-        fun itemSearchViewModelFactory(): SearchViewModel.Factory
     }
 }
