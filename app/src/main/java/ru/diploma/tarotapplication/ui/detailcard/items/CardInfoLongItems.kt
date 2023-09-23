@@ -13,24 +13,39 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.data.model.Tags
 
 @Composable
 fun CardInfoLongItems(
     tag: Tags
 ){
+    val iconsMap = mapOf(
+        "default" to R.drawable.categ_default,
+        "relations" to R.drawable.categ_relations,
+        "work" to R.drawable.categ_work,
+        "health" to R.drawable.categ_health,
+        "person" to R.drawable.categ_person,
+        "result" to R.drawable.categ_result,
+        "finish" to R.drawable.categ_finish,
+        "advice" to R.drawable.categ_advice,
+        "warn" to R.drawable.categ_warn,
+    )
+
     Row(modifier = Modifier
         .fillMaxSize()
         .padding(vertical = 8.dp, horizontal = 10.dp)
         .clip(shape = RoundedCornerShape(20.dp)),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Image(
-            modifier = Modifier
-                .padding(top = 10.dp, end = 20.dp),
-            painter = painterResource(id = tag.icon_id),
-            contentDescription = tag.name
-        )
+        iconsMap[tag.icon_id]?.let { painterResource(id = it) }?.let {
+            Image(
+                modifier = Modifier
+                    .padding(top = 10.dp, end = 20.dp),
+                painter = it,
+                contentDescription = tag.name
+            )
+        }
         Column(modifier = Modifier
             .padding(vertical = 5.dp, horizontal = 10.dp),
             horizontalAlignment = Alignment.Start,
@@ -54,7 +69,5 @@ fun CardInfoLongItems(
                 color = Color.White,
             )
         }
-
-
     }
 }

@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,6 +25,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.composable
 import dagger.hilt.android.EntryPointAccessors
+import ru.diploma.tarotapplication.TarotApplicationApp.Companion.context
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
@@ -37,6 +39,14 @@ fun DetailCardScreen(
     viewModel: DetailCardViewModel
 ) {
     val card = viewModel.cardData.collectAsState().value
+
+    val cardImgId = remember(card.card_image) {
+        context?.resources?.getIdentifier(
+            card.card_image,
+            "drawable",
+            context?.packageName
+        )
+    }
 
     Column(
         modifier = Modifier
@@ -56,14 +66,16 @@ fun DetailCardScreen(
             fontSize = 38.sp,
             color = Color.White
         )
-        Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(300.dp)
-                .padding(vertical = 20.dp),
-            painter = painterResource(id = card.card_image),
-            contentDescription = ""
-        )
+        cardImgId?.let { painterResource(id = it) }?.let {
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(300.dp)
+                    .padding(vertical = 20.dp),
+                painter = it,
+                contentDescription = ""
+            )
+        }
         Text(
             text = card.description,
             textAlign = TextAlign.Center,

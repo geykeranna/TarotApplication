@@ -10,7 +10,7 @@ data class Card(
     val tag_id: List<Tags>,
     val category_id: List<Tags>,
     val category_id_reverse: List<Tags>,
-    val card_image: Int
+    val card_image: String
 ) {
     companion object {
         val shimmerData = Card(
@@ -21,18 +21,18 @@ data class Card(
             tag_id = listOf(
                 Tags(
                     tad_id = 0,
-                    icon_id = 0,
+                    icon_id = "",
                     name = "",
                     value = ""
                 ),
                 Tags(
                     tad_id = 1,
-                    icon_id = 0,
+                    icon_id = "",
                     name = "   ",
                     value = "String"
                 ),
                 Tags(
-                    icon_id = 0,
+                    icon_id = "",
                     tad_id = 0,
                     name = "   ",
                     value = "String"
@@ -40,19 +40,19 @@ data class Card(
             ),
             category_id = listOf(
                 Tags(
-                    icon_id = 0,
+                    icon_id = "",
                     tad_id = 0,
                     name = "   ",
                     value = "String"
                 ),
                 Tags(
-                    icon_id = 0,
+                    icon_id = "",
                     tad_id = 0,
                     name = "   ",
                     value = "String"
                 ),
                 Tags(
-                    icon_id = 0,
+                    icon_id = "",
                     tad_id = 0,
                     name = "   ",
                     value = "String"
@@ -60,25 +60,25 @@ data class Card(
             ),
             category_id_reverse = listOf(
                 Tags(
-                    icon_id = 0,
+                    icon_id = "",
                     tad_id = 0,
                     name = "   ",
                     value = "String"
                 ),
                 Tags(
-                    icon_id = 0,
+                    icon_id = "",
                     tad_id = 0,
                     name = "   ",
                     value = "String"
                 ),
                 Tags(
-                    icon_id = R.drawable.major_arcana,
+                    icon_id = "",
                     tad_id = 0,
                     name = "   ",
                     value = "String"
                 )
             ),
-            card_image = R.drawable.rider_waite_tarot_system
+            card_image = ""
         )
     }
 }
