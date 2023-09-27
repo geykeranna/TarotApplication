@@ -21,13 +21,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.*
-import ru.diploma.tarotapplication.data.model.TarotSystem
+import ru.diploma.tarotapplication.data.model.TarotDecks
 import ru.diploma.tarotapplication.ui.suits.SuitsScreenFactory
 import ru.diploma.tarotapplication.ui.theme.BackgroundItemColor
 
 @Composable
 fun TarotSystemItem(
-    tarotSystem: TarotSystem,
+    tarotDecks: TarotDecks,
     navController: NavController
 ) {
     Row(
@@ -37,7 +37,7 @@ fun TarotSystemItem(
             .clip(shape = RoundedCornerShape(20.dp))
             .background(BackgroundItemColor)
             .clickable {
-                navController.navigate(SuitsScreenFactory.route + "/${tarotSystem.id}")
+                navController.navigate(SuitsScreenFactory.route + "/${tarotDecks.id}")
             }
         ,
         verticalAlignment = Alignment.CenterVertically,
@@ -48,12 +48,12 @@ fun TarotSystemItem(
             modifier = Modifier
                 .size(40.dp, 40.dp)
                 .clip(CircleShape),
-            painter = painterResource(id = tarotSystem.idImg),
-            contentDescription = tarotSystem.name,
+            painter = painterResource(id = tarotDecks.img_id),
+            contentDescription = tarotDecks.name,
             contentScale = ContentScale.Crop
         )
         Text(
-            text = tarotSystem.name,
+            text = tarotDecks.name,
             color = Color.White,
             fontSize = 24.sp,
             fontWeight = FontWeight.Normal

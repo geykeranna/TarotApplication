@@ -37,8 +37,9 @@ fun SuitsScreen(
     navController: NavController,
     viewModel: SuitsViewModel
 ) {
-    val suits = viewModel.suitsData.collectAsState().value
-    val pagesItems = suits.map { it.name }
+    val allCards = viewModel.tarotCardCollection.collectAsState().value
+    val suits = viewModel.tarotCardByGroup.collectAsState().value
+    val pagesItems = suits.map { it.value }
 
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
@@ -48,7 +49,6 @@ fun SuitsScreen(
     }
 
     Column {
-
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
             ScrollableTabRow(
                 modifier = Modifier
@@ -58,12 +58,12 @@ fun SuitsScreen(
                 indicator = indicator,
                 backgroundColor = BackgroundColor,
             ) {
-                pagesItems.forEachIndexed { index, title ->
+                pagesItems.forEachIndexed { index, item ->
                     Tab(
                         modifier = Modifier.zIndex(6f),
                         text = {
                             Text(
-                                text = title,
+                                text = item.first().suits_name,
                                 color = Color.White
                             )
                         },
@@ -101,7 +101,7 @@ fun SuitsScreen(
                         mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
                         mainAxisSpacing = 10.dp
                     ) {
-                        suits[page].cardsLink.forEachIndexed { _, card ->
+                        pagesItems[page].forEachIndexed { _, card ->
                             CardItem(
                                 item = card,
                                 navController = navController

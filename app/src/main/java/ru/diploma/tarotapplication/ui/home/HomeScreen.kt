@@ -47,7 +47,7 @@ fun HomeScreen(
         ){
             items(items=data) {system ->
                 TarotSystemItem(
-                    tarotSystem = system,
+                    tarotDecks = system,
                     navController = navController
                 )
             }

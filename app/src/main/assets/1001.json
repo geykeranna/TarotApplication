@@ -1,0 +1,552 @@
+{
+  "id": 1001,
+  "name": "Таро Уэйта",
+  "cards_link": [
+    {
+      "card_id": 1001101,
+      "card_name": "Шут",
+      "card_number": 0,
+      "suits_name": "major",
+      "img_id": "major00"
+    },
+    {
+      "card_id": 1001102,
+      "card_name": "Маг",
+      "card_number": 1,
+      "suits_name": "major",
+      "img_id": "major01"
+    },
+    {
+      "card_id": 1001103,
+      "card_name": "Жрица",
+      "card_number": 2,
+      "suits_name": "major",
+      "img_id": "major02"
+    },
+    {
+      "card_id": 1001104,
+      "card_name": "Императрица",
+      "card_number": 3,
+      "suits_name": "major",
+      "img_id": "major03"
+    },
+    {
+      "card_id": 1001105,
+      "card_name": "Император",
+      "card_number": 4,
+      "suits_name": "major",
+      "img_id": "major04"
+    },
+    {
+      "card_id": 1001106,
+      "card_name": "Жрец",
+      "card_number": 5,
+      "suits_name": "major",
+      "img_id": "major05"
+    },
+    {
+      "card_id": 1001107,
+      "card_name": "Влюбленные",
+      "card_number": 6,
+      "suits_name": "major",
+      "img_id": "major06"
+    },
+    {
+      "card_id": 1001108,
+      "card_name": "Колесница",
+      "card_number": 7,
+      "suits_name": "major",
+      "img_id": "major07"
+    },
+    {
+      "card_id": 1001109,
+      "card_name": "Правосудие",
+      "card_number": 8,
+      "suits_name": "major",
+      "img_id": "major08"
+    },
+    {
+      "card_id": 1001110,
+      "card_name": "Отшельник",
+      "card_number": 9,
+      "suits_name": "major",
+      "img_id": "major09"
+    },
+    {
+      "card_id": 1001111,
+      "card_name": "Колесо фортуны",
+      "card_number": 10,
+      "suits_name": "major",
+      "img_id": "major10"
+    },
+    {
+      "card_id": 1001112,
+      "card_name": "Сила",
+      "card_number": 11,
+      "suits_name": "major",
+      "img_id": "major11"
+    },
+    {
+      "card_id": 1001113,
+      "card_name": "Повешанный",
+      "card_number": 12,
+      "suits_name": "major",
+      "img_id": "major12"
+    },
+    {
+      "card_id": 1001114,
+      "card_name": "Смерть",
+      "card_number": 13,
+      "suits_name": "major",
+      "img_id": "major13"
+    },
+    {
+      "card_id": 1001115,
+      "card_name": "Умеренность",
+      "card_number": 14,
+      "suits_name": "major",
+      "img_id": "major14"
+    },
+    {
+      "card_id": 1001116,
+      "card_name": "Дьявол",
+      "card_number": 15,
+      "suits_name": "major",
+      "img_id": "major15"
+    },
+    {
+      "card_id": 1001117,
+      "card_name": "Башня",
+      "card_number": 16,
+      "suits_name": "major",
+      "img_id": "major16"
+    },
+    {
+      "card_id": 1001118,
+      "card_name": "Звезда",
+      "card_number": 17,
+      "suits_name": "major",
+      "img_id": "major17"
+    },
+    {
+      "card_id": 1001119,
+      "card_name": "Луна",
+      "card_number": 18,
+      "suits_name": "major",
+      "img_id": "major18"
+    },
+    {
+      "card_id": 1001120,
+      "card_name": "Солнце",
+      "card_number": 19,
+      "suits_name": "major",
+      "img_id": "major19"
+    },
+    {
+      "card_id": 1001121,
+      "card_name": "Суд",
+      "card_number": 20,
+      "suits_name": "major",
+      "img_id": "major20"
+    },
+    {
+      "card_id": 1001122,
+      "card_name": "Мир",
+      "card_number": 21,
+      "suits_name": "major",
+      "img_id": "major21"
+    },
+    {
+      "card_id": 1001123,
+      "card_name": "Туз жезлов",
+      "card_number": 22,
+      "suits_name": "wands",
+      "img_id": "wands01"
+    },
+    {
+      "card_id": 1001124,
+      "card_name": "Двойка жезлов",
+      "card_number": 23,
+      "suits_name": "wands",
+      "img_id": "wands02"
+    },
+    {
+      "card_id": 1001125,
+      "card_name": "Тройка жезлов",
+      "card_number": 24,
+      "suits_name": "wands",
+      "img_id": "wands03"
+    },
+    {
+      "card_id": 1001126,
+      "card_name": "Четверка жезлов",
+      "card_number": 25,
+      "suits_name": "wands",
+      "img_id": "wands04"
+    },
+    {
+      "card_id": 1001127,
+      "card_name": "Пятерка жезлов",
+      "card_number": 26,
+      "suits_name": "wands",
+      "img_id": "wands05"
+    },
+    {
+      "card_id": 1001128,
+      "card_name": "Шестерка жезлов",
+      "card_number": 27,
+      "suits_name": "wands",
+      "img_id": "wands06"
+    },
+    {
+      "card_id": 1001129,
+      "card_name": "Семерка жезлов",
+      "card_number": 28,
+      "suits_name": "wands",
+      "img_id": "wands07"
+    },
+    {
+      "card_id": 1001130,
+      "card_name": "Восьмерка жезлов",
+      "card_number": 29,
+      "suits_name": "wands",
+      "img_id": "wands08"
+    },
+    {
+      "card_id": 1001131,
+      "card_name": "Девятка жезлов",
+      "card_number": 30,
+      "suits_name": "wands",
+      "img_id": "wands09"
+    },
+    {
+      "card_id": 1001132,
+      "card_name": "Десятка жезлов",
+      "card_number": 31,
+      "suits_name": "wands",
+      "img_id": "wands10"
+    },
+    {
+      "card_id": 1001133,
+      "card_name": "Паж жезлов",
+      "card_number": 32,
+      "suits_name": "wands",
+      "img_id": "wands11"
+    },
+    {
+      "card_id": 1001134,
+      "card_name": "Рыцарь жезлов",
+      "card_number": 33,
+      "suits_name": "wands",
+      "img_id": "wands12"
+    },
+    {
+      "card_id": 1001135,
+      "card_name": "Королева жезлов",
+      "card_number": 34,
+      "suits_name": "wands",
+      "img_id": "wands13"
+    },
+    {
+      "card_id": 1001136,
+      "card_name": "Король жезлов",
+      "card_number": 35,
+      "suits_name": "wands",
+      "img_id": "wands14"
+    },
+    {
+      "card_id": 1001137,
+      "card_name": "Туз кубков",
+      "card_number": 36,
+      "suits_name": "cups",
+      "img_id": "cups01"
+    },
+    {
+      "card_id": 1001138,
+      "card_number": 37,
+      "card_name": "Двойка кубков",
+      "suits_name": "cups",
+      "img_id": "cups02"
+    },
+    {
+      "card_id": 1001139,
+      "card_name": "Тройка кубков",
+      "card_number": 38,
+      "suits_name": "cups",
+      "img_id": "cups03"
+    },
+    {
+      "card_id": 1001140,
+      "card_name": "Четверка кубков",
+      "card_number": 39,
+      "suits_name": "cups",
+      "img_id": "cups04"
+    },
+    {
+      "card_id": 1001141,
+      "card_name": "Пятерка кубков",
+      "card_number": 40,
+      "suits_name": "cups",
+      "img_id": "cups05"
+    },
+    {
+      "card_id": 1001142,
+      "card_name": "Шестерка кубков",
+      "card_number": 41,
+      "suits_name": "cups",
+      "img_id": "cups06"
+    },
+    {
+      "card_id": 1001143,
+      "card_name": "Семерка кубков",
+      "card_number": 42,
+      "suits_name": "cups",
+      "img_id": "cups07"
+    },
+    {
+      "card_id": 1001144,
+      "card_name": "Восьмерка кубков",
+      "card_number": 43,
+      "suits_name": "cups",
+      "img_id": "cups08"
+    },
+    {
+      "card_id": 1001145,
+      "card_name": "Девятка кубков",
+      "card_number": 44,
+      "suits_name": "cups",
+      "img_id": "cups09"
+    },
+    {
+      "card_id": 1001146,
+      "card_name": "Десятка кубков",
+      "card_number": 45,
+      "suits_name": "cups",
+      "img_id": "cups10"
+    },
+    {
+      "card_id": 1001147,
+      "card_name": "Паж кубков",
+      "card_number": 46,
+      "suits_name": "cups",
+      "img_id": "cups11"
+    },
+    {
+      "card_id": 1001148,
+      "card_name": "Рыцарь кубков",
+      "card_number": 47,
+      "suits_name": "cups",
+      "img_id": "cups12"
+    },
+    {
+      "card_id": 1001149,
+      "card_name": "Королева кубков",
+      "card_number": 48,
+      "suits_name": "cups",
+      "img_id": "cups13"
+    },
+    {
+      "card_id": 1001150,
+      "card_name": "Король кубков",
+      "card_number": 49,
+      "suits_name": "cups",
+      "img_id": "cups14"
+    },
+    {
+      "card_id": 1001151,
+      "card_name": "Туз мечей",
+      "card_number": 50,
+      "suits_name": "swords",
+      "img_id": "swords01"
+    },
+    {
+      "card_id": 1001152,
+      "card_number": 51,
+      "card_name": "Двойка мечей",
+      "suits_name": "swords",
+      "img_id": "swords02"
+    },
+    {
+      "card_id": 1001153,
+      "card_name": "Тройка мечей",
+      "card_number": 52,
+      "suits_name": "swords",
+      "img_id": "swords03"
+    },
+    {
+      "card_id": 1001154,
+      "card_name": "Четверка мечей",
+      "card_number": 53,
+      "suits_name": "swords",
+      "img_id": "swords04"
+    },
+    {
+      "card_id": 1001155,
+      "card_name": "Пятерка мечей",
+      "card_number": 54,
+      "suits_name": "swords",
+      "img_id": "swords05"
+    },
+    {
+      "card_id": 1001156,
+      "card_name": "Шестерка мечей",
+      "card_number": 55,
+      "suits_name": "swords",
+      "img_id": "swords06"
+    },
+    {
+      "card_id": 1001157,
+      "card_name": "Семерка мечей",
+      "card_number": 56,
+      "suits_name": "swords",
+      "img_id": "swords07"
+    },
+    {
+      "card_id": 1001158,
+      "card_name": "Восьмерка мечей",
+      "card_number": 57,
+      "suits_name": "swords",
+      "img_id": "swords08"
+    },
+    {
+      "card_id": 1001159,
+      "card_name": "Девятка мечей",
+      "card_number": 58,
+      "suits_name": "swords",
+      "img_id": "swords09"
+    },
+    {
+      "card_id": 1001160,
+      "card_name": "Десятка мечей",
+      "card_number": 59,
+      "suits_name": "swords",
+      "img_id": "swords10"
+    },
+    {
+      "card_id": 1001161,
+      "card_name": "Паж мечей",
+      "card_number": 60,
+      "suits_name": "swords",
+      "img_id": "swords11"
+    },
+    {
+      "card_id": 1001162,
+      "card_name": "Рыцарь мечей",
+      "card_number": 61,
+      "suits_name": "swords",
+      "img_id": "swords12"
+    },
+    {
+      "card_id": 1001163,
+      "card_name": "Королева мечей",
+      "card_number": 62,
+      "suits_name": "swords",
+      "img_id": "swords13"
+    },
+    {
+      "card_id": 1001164,
+      "card_name": "Король мечей",
+      "card_number": 63,
+      "suits_name": "swords",
+      "img_id": "swords14"
+    },
+    {
+      "card_id": 1001165,
+      "card_name": "Туз пентаклей",
+      "card_number": 64,
+      "suits_name": "coins",
+      "img_id": "coins01"
+    },
+    {
+      "card_id": 1001166,
+      "card_number": 65,
+      "card_name": "Двойка пентаклей",
+      "suits_name": "coins",
+      "img_id": "coins02"
+    },
+    {
+      "card_id": 1001167,
+      "card_name": "Тройка пентаклей",
+      "card_number": 66,
+      "suits_name": "coins",
+      "img_id": "coins03"
+    },
+    {
+      "card_id": 1001168,
+      "card_name": "Четверка пентаклей",
+      "card_number": 67,
+      "suits_name": "coins",
+      "img_id": "coins04"
+    },
+    {
+      "card_id": 1001169,
+      "card_name": "Пятерка пентаклей",
+      "card_number": 68,
+      "suits_name": "coins",
+      "img_id": "coins05"
+    },
+    {
+      "card_id": 1001170,
+      "card_name": "Шестерка пентаклей",
+      "card_number": 69,
+      "suits_name": "coins",
+      "img_id": "coins06"
+    },
+    {
+      "card_id": 1001171,
+      "card_name": "Семерка пентаклей",
+      "card_number": 70,
+      "suits_name": "coins",
+      "img_id": "coins07"
+    },
+    {
+      "card_id": 1001172,
+      "card_name": "Восьмерка пентаклей",
+      "card_number": 71,
+      "suits_name": "coins",
+      "img_id": "coins08"
+    },
+    {
+      "card_id": 1001173,
+      "card_name": "Девятка пентаклей",
+      "card_number": 72,
+      "suits_name": "coins",
+      "img_id": "coins09"
+    },
+    {
+      "card_id": 1001174,
+      "card_name": "Десятка пентаклей",
+      "card_number": 73,
+      "suits_name": "coins",
+      "img_id": "coins10"
+    },
+    {
+      "card_id": 1001175,
+      "card_name": "Паж пентаклей",
+      "card_number": 74,
+      "suits_name": "coins",
+      "img_id": "coins11"
+    },
+    {
+      "card_id": 1001176,
+      "card_name": "Рыцарь пентаклей",
+      "card_number": 75,
+      "suits_name": "coins",
+      "img_id": "coins12"
+    },
+    {
+      "card_id": 1001177,
+      "card_name": "Королева пентаклей",
+      "card_number": 76,
+      "suits_name": "coins",
+      "img_id": "coins13"
+    },
+    {
+      "card_id": 1001178,
+      "card_name": "Король пентаклей",
+      "card_number": 77,
+      "suits_name": "coins",
+      "img_id": "coins14"
+    }
+  ]
+}

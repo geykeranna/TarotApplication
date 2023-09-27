@@ -27,7 +27,7 @@ class DetailCardViewModel @AssistedInject constructor(
     private val _cardData = MutableStateFlow(Card.shimmerData)
 
     private fun startLoading(cardId: Long) = viewModelScope.launch {
-        _cardData.emit(cardRepository.getCardByID(cardId))
+        _cardData.emit(cardRepository.getItemByID(cardId))
     }
 
     override fun obtainEvent(event: Event) {

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -16,22 +17,30 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import ru.diploma.tarotapplication.data.model.ShortCard
+import ru.diploma.tarotapplication.TarotApplicationApp
+import ru.diploma.tarotapplication.data.model.InfoCard
 import ru.diploma.tarotapplication.ui.detailcard.DetailCardScreenFactory
 import ru.diploma.tarotapplication.ui.theme.fontFamily
 
 @Composable
 fun CardItem(
-    item: ShortCard,
+    item: InfoCard,
     navController: NavController
 ) {
+    val cardImgId = remember(item.img_id) {
+        TarotApplicationApp.context?.resources?.getIdentifier(
+            item.img_id,
+            "drawable",
+            TarotApplicationApp.context?.packageName
+        )
+    }
     Column(
         modifier = Modifier
             .height(240.dp)
             .width(110.dp)
             .padding(vertical = 2.dp)
             .clickable {
-                navController.navigate(DetailCardScreenFactory.route + "/${item.id_card}")
+                navController.navigate(DetailCardScreenFactory.route + "/${item.card_id}")
             },
         verticalArrangement = Arrangement.spacedBy(6.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -45,14 +54,16 @@ fun CardItem(
             verticalArrangement = Arrangement.spacedBy(6.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Image(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(160.dp)
-                    .padding(top = 10.dp),
-                painter = painterResource(id = item.id_img),
-                contentDescription = ""
-            )
+            cardImgId?.let { painterResource(id = it) }?.let {
+                Image(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(160.dp)
+                        .padding(top = 10.dp),
+                    painter = it,
+                    contentDescription = ""
+                )
+            }
             Text(
                 modifier = Modifier.padding(horizontal = 3.dp),
                 text = item.card_name,
