@@ -6,10 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -58,11 +55,5 @@ fun TarotSystemItem(
             fontSize = 24.sp,
             fontWeight = FontWeight.Normal
         )
-        Spacer(modifier = Modifier.weight(1f))
-        Icon(
-            Icons.Rounded.Favorite,
-            tint = Color.Gray,
-            contentDescription = "Favorite Icon")
-        Spacer(modifier = Modifier.width(3.dp))
     }
 }

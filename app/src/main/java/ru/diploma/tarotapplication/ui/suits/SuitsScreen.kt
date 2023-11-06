@@ -8,10 +8,15 @@ import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.material.ripple.RippleAlpha
 import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
@@ -24,11 +29,13 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.launch
+import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
 import ru.diploma.tarotapplication.ui.components.CustomIndicator
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
+import ru.diploma.tarotapplication.ui.theme.fontFamily
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagerApi::class)
@@ -48,36 +55,56 @@ fun SuitsScreen(
         CustomIndicator(tabPositions, pagerState)
     }
 
+    val iconsMap = mapOf(
+        "major" to R.drawable.major_arcana,
+        "cups" to R.drawable.cups,
+        "swords" to R.drawable.swords,
+        "wands" to R.drawable.wands,
+        "coins" to R.drawable.coins
+    )
+
     Column {
+        Text(
+            modifier = Modifier
+                .padding(top = 30.dp, bottom = 20.dp)
+                .fillMaxWidth()
+            ,
+            text = allCards.name,
+            fontFamily = fontFamily,
+            fontSize = 36.sp,
+            textAlign = TextAlign.Center
+        )
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
             ScrollableTabRow(
                 modifier = Modifier
                     .height(70.dp)
+                    .align(Alignment.CenterHorizontally)
                     .padding(vertical = 10.dp),
                 selectedTabIndex = pagerState.currentPage,
                 indicator = indicator,
                 backgroundColor = BackgroundColor,
+                divider = {}
             ) {
                 pagesItems.forEachIndexed { index, item ->
-                    Tab(
-                        modifier = Modifier.zIndex(6f),
-                        text = {
-                            Text(
-                                text = item.first().suits_name,
-                                color = Color.White
-                            )
-                        },
-                        //TODO : сделать иконки вместо текста
-//                    icon = {
-//                           Icon(painter = painterResource(R.drawable.cups), contentDescription = null)
-//                    },
-                        selected = pagerState.currentPage == index,
-                        onClick = {
-                            scope.launch {
-                                pagerState.scrollToPage(index)
-                            }
-                        }
-                    )
+                    iconsMap[item.first().suits_name]?.let {
+                        painterResource(
+                            it
+                        )
+                    }?.let {
+                        Modifier
+                            .zIndex(6f)
+                            .paint(painter = it)
+                    }?.let {
+                        Tab(
+                            modifier = it,
+                            selected = pagerState.currentPage == index,
+                            onClick = {
+                                scope.launch {
+                                    pagerState.scrollToPage(index)
+                                }
+                            },
+                        )
+                    }
                 }
             }
         }

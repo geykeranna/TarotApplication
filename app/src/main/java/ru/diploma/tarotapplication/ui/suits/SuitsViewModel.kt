@@ -21,24 +21,19 @@ class SuitsViewModel @AssistedInject constructor (
     val tarotCardCollection: StateFlow<TarotCardCollection>
         get() = _tarotCardCollectionData.asStateFlow()
 
-    val tarotCardByGroup: StateFlow<MutableMap<String, MutableList<InfoCard>>>
+    val tarotCardByGroup: StateFlow<Map<String, List<InfoCard>>>
         get() = _tarotCardByGroup.asStateFlow()
 
     private val _tarotCardCollectionData = MutableStateFlow(TarotCardCollection.shimmerData)
-    private val _tarotCardByGroup = MutableStateFlow(mutableMapOf<String, MutableList<InfoCard>>())
+    private val _tarotCardByGroup = MutableStateFlow(mapOf<String, List<InfoCard>>())
 
     private fun startLoading(systemId: Long) = viewModelScope.launch {
         _tarotCardCollectionData.emit(groupOfSuitsRepository.getGroupByID(systemId))
         _tarotCardByGroup.emit(filterCardsByGroup(groupOfSuitsRepository.getGroupByID(systemId)))
     }
 
-    private fun filterCardsByGroup(allCards: TarotCardCollection): MutableMap<String, MutableList<InfoCard>> {
-        val cardsItemsBySuits = mutableMapOf<String, MutableList<InfoCard>>()
-        allCards.cards_link.forEach {
-           if (cardsItemsBySuits.containsKey(it.suits_name)) cardsItemsBySuits[it.suits_name]?.add(it)
-           else cardsItemsBySuits[it.suits_name] = mutableListOf(it)
-        }
-        return cardsItemsBySuits
+    private fun filterCardsByGroup(allCards: TarotCardCollection): Map<String, List<InfoCard>> {
+        return allCards.cards_link.groupBy { it.suits_name }
     }
 
     sealed class Event : BaseEvent() {
