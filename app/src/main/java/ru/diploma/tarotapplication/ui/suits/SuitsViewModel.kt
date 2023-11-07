@@ -6,6 +6,7 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.data.model.InfoCard
 import ru.diploma.tarotapplication.data.model.TarotCardCollection
 import ru.diploma.tarotapplication.domain.repositories.GroupOfSuitsRepository
@@ -18,6 +19,14 @@ class SuitsViewModel @AssistedInject constructor (
     private val groupOfSuitsRepository: GroupOfSuitsRepository,
 ) : BaseViewModel<SuitsViewModel.Event>() {
 
+    private val iconsMap = mapOf(
+        "major" to R.drawable.major_arcana,
+        "cups" to R.drawable.cups,
+        "swords" to R.drawable.swords,
+        "wands" to R.drawable.wands,
+        "coins" to R.drawable.coins
+    )
+
     val tarotCardCollection: StateFlow<TarotCardCollection>
         get() = _tarotCardCollectionData.asStateFlow()
 
@@ -26,6 +35,8 @@ class SuitsViewModel @AssistedInject constructor (
 
     private val _tarotCardCollectionData = MutableStateFlow(TarotCardCollection.shimmerData)
     private val _tarotCardByGroup = MutableStateFlow(mapOf<String, List<InfoCard>>())
+
+    fun getIconSuitsID(name: String) = iconsMap.getOrDefault(name, R.drawable.def)
 
     private fun startLoading(systemId: Long) = viewModelScope.launch {
         _tarotCardCollectionData.emit(groupOfSuitsRepository.getGroupByID(systemId))

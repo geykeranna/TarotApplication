@@ -29,7 +29,6 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.launch
-import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
@@ -55,14 +54,6 @@ fun SuitsScreen(
         CustomIndicator(tabPositions, pagerState)
     }
 
-    val iconsMap = mapOf(
-        "major" to R.drawable.major_arcana,
-        "cups" to R.drawable.cups,
-        "swords" to R.drawable.swords,
-        "wands" to R.drawable.wands,
-        "coins" to R.drawable.coins
-    )
-
     Column {
         Text(
             modifier = Modifier
@@ -86,25 +77,17 @@ fun SuitsScreen(
                 divider = {}
             ) {
                 pagesItems.forEachIndexed { index, item ->
-                    iconsMap[item.first().suits_name]?.let {
-                        painterResource(
-                            it
-                        )
-                    }?.let {
-                        Modifier
+                    Tab(
+                        modifier = Modifier
                             .zIndex(6f)
-                            .paint(painter = it)
-                    }?.let {
-                        Tab(
-                            modifier = it,
-                            selected = pagerState.currentPage == index,
-                            onClick = {
-                                scope.launch {
-                                    pagerState.scrollToPage(index)
-                                }
-                            },
-                        )
-                    }
+                            .paint(painter = painterResource(viewModel.getIconSuitsID(item.first().suits_name))),
+                        selected = pagerState.currentPage == index,
+                        onClick = {
+                            scope.launch {
+                                pagerState.scrollToPage(index)
+                            }
+                        },
+                    )
                 }
             }
         }
