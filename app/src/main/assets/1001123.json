@@ -1,0 +1,187 @@
+{
+  "id": 1001001,
+  "card_number": 0,
+  "card_name": "",
+  "description": "",
+  "card_image": "major00",
+  "tag_id": [
+    {
+      "tag_ids": 1001001001,
+      "icon_id": "major_arcana",
+      "name": "Роль",
+      "value": "Старший аркан"
+    },
+    {
+      "tag_ids": 1001001002,
+      "icon_id": "",
+      "name": "Знак зодиака",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001003,
+      "icon_id": "",
+      "name": "Стихия",
+      "value": ""
+    }
+  ],
+  "category_id": [
+    {
+      "tag_ids": 1001001101,
+      "icon_id": "default",
+      "name": "Общее значение",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001102,
+      "icon_id": "keywords",
+      "name": "Ключевые слова и значения",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001103,
+      "icon_id": "relations",
+      "name": "Отношения",
+      "value": ""
+     },
+    {
+      "tag_ids": 1001001104,
+      "icon_id": "work",
+      "name": "Работа",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001105,
+      "icon_id": "money",
+      "name": "Деньги",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001106,
+      "icon_id": "health",
+      "name": "Здоровье",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001107,
+      "icon_id": "situation",
+      "name": "Ситуации",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001108,
+      "icon_id": "person",
+      "name": "Личность",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001109,
+      "icon_id": "result",
+      "name": "Результат",
+      "value": ""
+    },
+    {
+      "tag_ids": 10010011010,
+      "icon_id": "finish",
+      "name": "Итог",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001111,
+      "icon_id": "advice",
+      "name": "Совет",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001112,
+      "icon_id": "location",
+      "name": "Место события",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001113,
+      "icon_id": "warn",
+      "name": "Предупреждение",
+      "value": ""
+    }
+  ],
+  "category_id_reverse": [
+    {
+      "tag_ids": 1001001101,
+      "icon_id": "default",
+      "name": "Общее значение",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001102,
+      "icon_id": "keywords",
+      "name": "Ключевые слова и значения",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001103,
+      "icon_id": "relations",
+      "name": "Отношения",
+      "value": ""
+     },
+    {
+      "tag_ids": 1001001104,
+      "icon_id": "work",
+      "name": "Работа",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001105,
+      "icon_id": "money",
+      "name": "Деньги",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001106,
+      "icon_id": "health",
+      "name": "Здоровье",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001107,
+      "icon_id": "situation",
+      "name": "Ситуации",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001108,
+      "icon_id": "person",
+      "name": "Личность",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001109,
+      "icon_id": "result",
+      "name": "Результат",
+      "value": ""
+    },
+    {
+      "tag_ids": 10010011010,
+      "icon_id": "finish",
+      "name": "Итог",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001111,
+      "icon_id": "advice",
+      "name": "Совет",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001112,
+      "icon_id": "location",
+      "name": "Место события",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001113,
+      "icon_id": "warn",
+      "name": "Предупреждение",
+      "value": ""
+    }
+  ]
+}
