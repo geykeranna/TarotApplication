@@ -32,8 +32,8 @@ fun HomeScreen(
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 40.dp)
-                .height(40.dp),
+                .padding(vertical = 20.dp)
+                .height(55.dp),
             text = "Tarot",
             fontSize = 49.sp,
             fontWeight = FontWeight.Normal,

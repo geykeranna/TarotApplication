@@ -1,11 +1,13 @@
 package ru.diploma.tarotapplication.ui.detailcard
 
+import com.google.accompanist.flowlayout.FlowMainAxisAlignment
+import com.google.accompanist.flowlayout.FlowRow
+import com.google.accompanist.flowlayout.SizeMode
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ripple.LocalRippleTheme
@@ -69,8 +71,8 @@ fun DetailCardScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(100.dp)
-                .padding(bottom = 10.dp, top = 40.dp),
-            text = card.card_name,
+                .padding(bottom = 1.dp, top = 30.dp),
+            text = if (card.short_description != "") "${card.card_name}. ${card.short_description}" else card.card_name,
             textAlign = TextAlign.Center,
             fontSize = 38.sp,
             color = Color.White
@@ -80,8 +82,8 @@ fun DetailCardScreen(
                 Image(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(300.dp)
-                        .padding(vertical = 20.dp)
+                        .height(270.dp)
+                        .padding(vertical = 10.dp)
                         .clickable {
                             cardState = !cardState
                             angle = (angle + 180) % 360f
@@ -100,15 +102,20 @@ fun DetailCardScreen(
             fontStyle = FontStyle.Italic
         )
 
-        LazyRow(
+        FlowRow(
             modifier = Modifier
-                .height(150.dp)
+                .height(125.dp)
                 .fillMaxWidth()
-                .padding(horizontal = 10.dp)
-                .padding(top = 20.dp, bottom = 10.dp)
-        ){
-            items (items=card.tag_id) { tag ->
-                CardInfoShortItems(tag = tag, iconID = viewModel.getIconTagID(tag.icon_id))
+                .padding(horizontal = 2.dp)
+                .padding(top = 20.dp, bottom = 1.dp),
+            mainAxisSize = SizeMode.Expand,
+            mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
+            mainAxisSpacing = 10.dp
+        ) {
+            card.tag_id.forEach { tag ->
+                CardInfoShortItems(
+                    tag = tag,
+                    iconID = viewModel.getIconTagID(tag.icon_id))
             }
         }
 

@@ -69,8 +69,9 @@ fun SuitsScreen(
             ScrollableTabRow(
                 modifier = Modifier
                     .height(70.dp)
+                    .fillMaxWidth()
                     .align(Alignment.CenterHorizontally)
-                    .padding(vertical = 10.dp),
+                    .padding(vertical = 10.dp, horizontal = 2.dp),
                 selectedTabIndex = pagerState.currentPage,
                 indicator = indicator,
                 backgroundColor = BackgroundColor,

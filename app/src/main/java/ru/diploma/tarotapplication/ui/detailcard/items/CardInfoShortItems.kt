@@ -21,8 +21,8 @@ fun CardInfoShortItems(
     Column(
         modifier = Modifier
             .fillMaxHeight()
-            .padding(horizontal = 10.dp)
-            .width(100.dp),
+            .padding(horizontal = 4.dp)
+            .width(110.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = CenterHorizontally
     ) {
@@ -35,7 +35,7 @@ fun CardInfoShortItems(
         )
         Text(
             modifier = Modifier
-                .padding(vertical = 4.dp),
+                .padding(vertical = 1.dp),
             text = tag.name,
             textAlign = TextAlign.Center,
             fontSize = 18.sp,
@@ -43,7 +43,7 @@ fun CardInfoShortItems(
         )
         Text(
             modifier = Modifier
-                .padding(vertical = 4.dp)
+                .padding(vertical = 1.dp)
             ,
             text = tag.value,
             textAlign = TextAlign.Center,
