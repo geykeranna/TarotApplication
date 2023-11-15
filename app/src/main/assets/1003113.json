@@ -1,0 +1,104 @@
+{
+  "id": 1003113,
+  "card_number": 11,
+  "card_name": "",
+  "short_description": "",
+  "description": "",
+  "card_image": "manara_major06",
+  "tag_id": [
+    {
+      "tag_ids": 1001001001,
+      "icon_id": "major_arcana",
+      "name": "Роль",
+      "value": "Старший аркан"
+    },
+    {
+      "tag_ids": 1001001002,
+      "icon_id": "zodiac_taurus",
+      "name": "Знак зодиака",
+      "value": "Телец"
+    }
+  ],
+  "category_id": [
+    {
+      "tag_ids": 1001001101,
+      "icon_id": "default",
+      "name": "Описание",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001102,
+      "icon_id": "default",
+      "name": "Общее значение",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001103,
+      "icon_id": "relations",
+      "name": "Чувства и взаимоотношения",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001104,
+      "icon_id": "health",
+      "name": "Физическое состояние",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001105,
+      "icon_id": "person",
+      "name": "Состояние",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001106,
+      "icon_id": "result",
+      "name": "Позитивное развитие ситуации",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001107,
+      "icon_id": "result",
+      "name": "Негативное развитие ситуации",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001108,
+      "icon_id": "finish",
+      "name": "Позитивная сторона карты",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001109,
+      "icon_id": "finish",
+      "name": "Негативная сторона карты",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001110,
+      "icon_id": "advice",
+      "name": "Рекомендация",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001111,
+      "icon_id": "warn",
+      "name": "Предостережение",
+      "value": ""
+    }
+  ],
+  "category_id_reverse": [
+    {
+      "tag_ids": 1001001101,
+      "icon_id": "default",
+      "name": "Описание",
+      "value": ""
+    },
+    {
+      "tag_ids": 1001001102,
+      "icon_id": "default",
+      "name": "Общее значение",
+      "value": ""
+    }
+  ]
+}

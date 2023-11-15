@@ -94,13 +94,15 @@ fun DetailCardScreen(
                 )
             }
         }
-        Text(
-            text = card.description,
-            textAlign = TextAlign.Center,
-            fontSize = 18.sp,
-            color = Color.White,
-            fontStyle = FontStyle.Italic
-        )
+        if (card.description != ""){
+            Text(
+                text = card.description,
+                textAlign = TextAlign.Center,
+                fontSize = 18.sp,
+                color = Color.White,
+                fontStyle = FontStyle.Italic
+            )
+        }
 
         FlowRow(
             modifier = Modifier
@@ -122,7 +124,7 @@ fun DetailCardScreen(
         LazyColumn(
             modifier = Modifier
                 .padding(5.dp)
-                .heightIn(min = 10.dp, max = 900.dp),
+                .heightIn(min = 100.dp, max = 900.dp),
         ){
             val items = if(cardState) card.category_id else card.category_id_reverse
             items(items=items) {tag ->

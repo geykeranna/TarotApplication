@@ -24,7 +24,11 @@ class SuitsViewModel @AssistedInject constructor (
         "cups" to R.drawable.cups,
         "swords" to R.drawable.swords,
         "wands" to R.drawable.wands,
-        "coins" to R.drawable.coins
+        "coins" to R.drawable.coins,
+        "element_water" to R.drawable.element_water,
+        "element_fire" to R.drawable.element_fire,
+        "element_wind" to R.drawable.element_wind,
+        "element_earth" to R.drawable.element_earth
     )
 
     val tarotCardCollection: StateFlow<TarotCardCollection>
