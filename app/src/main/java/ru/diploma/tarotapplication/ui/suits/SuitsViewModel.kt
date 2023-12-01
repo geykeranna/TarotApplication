@@ -12,24 +12,13 @@ import ru.diploma.tarotapplication.data.model.TarotCardCollection
 import ru.diploma.tarotapplication.domain.repositories.GroupOfSuitsRepository
 import ru.diploma.tarotapplication.ui.base.BaseEvent
 import ru.diploma.tarotapplication.ui.base.BaseViewModel
+import ru.diploma.tarotapplication.ui.components.iconsMap
 
 class SuitsViewModel @AssistedInject constructor (
     @Assisted
     private val systemId: Long,
     private val groupOfSuitsRepository: GroupOfSuitsRepository,
 ) : BaseViewModel<SuitsViewModel.Event>() {
-
-    private val iconsMap = mapOf(
-        "major" to R.drawable.major_arcana,
-        "cups" to R.drawable.cups,
-        "swords" to R.drawable.swords,
-        "wands" to R.drawable.wands,
-        "coins" to R.drawable.coins,
-        "element_water" to R.drawable.element_water,
-        "element_fire" to R.drawable.element_fire,
-        "element_wind" to R.drawable.element_wind,
-        "element_earth" to R.drawable.element_earth
-    )
 
     val tarotCardCollection: StateFlow<TarotCardCollection>
         get() = _tarotCardCollectionData.asStateFlow()

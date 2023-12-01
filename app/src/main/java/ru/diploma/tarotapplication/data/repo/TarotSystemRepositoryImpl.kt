@@ -16,11 +16,11 @@ class TarotSystemRepositoryImpl @Inject constructor(
                 name = "Таро Уэйта",
                 img_id = R.drawable.rider_waite_tarot_system
             ),
-            TarotDecks(
-                id = 1002,
-                name = "Таро Тотта",
-                img_id = R.drawable.thoth_tarot_system
-            ),
+//            TarotDecks(
+//                id = 1002,
+//                name = "Таро Тотта",
+//                img_id = R.drawable.thoth_tarot_system
+//            ),
             TarotDecks(
                 id = 1003,
                 name = "Таро Манара",

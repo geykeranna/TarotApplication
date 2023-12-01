@@ -104,20 +104,22 @@ fun DetailCardScreen(
             )
         }
 
-        FlowRow(
-            modifier = Modifier
-                .height(125.dp)
-                .fillMaxWidth()
-                .padding(horizontal = 2.dp)
-                .padding(top = 20.dp, bottom = 1.dp),
-            mainAxisSize = SizeMode.Expand,
-            mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
-            mainAxisSpacing = 10.dp
-        ) {
-            card.tag_id.forEach { tag ->
-                CardInfoShortItems(
-                    tag = tag,
-                    iconID = viewModel.getIconTagID(tag.icon_id))
+        if(card.tag_id.isNotEmpty()) {
+            FlowRow(
+                modifier = Modifier
+                    .height(125.dp)
+                    .fillMaxWidth()
+                    .padding(horizontal = 2.dp)
+                    .padding(top = 20.dp, bottom = 1.dp),
+                mainAxisSize = SizeMode.Expand,
+                mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
+                mainAxisSpacing = 10.dp
+            ) {
+                card.tag_id.forEach { tag ->
+                    CardInfoShortItems(
+                        tag = tag,
+                        iconID = viewModel.getIconTagID(tag.icon_id))
+                }
             }
         }
 

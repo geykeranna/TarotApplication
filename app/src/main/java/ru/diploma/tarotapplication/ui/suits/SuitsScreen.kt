@@ -32,9 +32,9 @@ import kotlinx.coroutines.launch
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
-import ru.diploma.tarotapplication.ui.components.CustomIndicator
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
-import ru.diploma.tarotapplication.ui.theme.fontFamily
+import ru.diploma.tarotapplication.ui.components.CustomIndicator
+import ru.diploma.tarotapplication.ui.components.CustomScrollableTabRow
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagerApi::class)
@@ -50,7 +50,7 @@ fun SuitsScreen(
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
 
-    val indicator = @Composable { tabPositions: List<TabPosition> ->
+    val indicator = @Composable { tabPositions: List<ru.diploma.tarotapplication.ui.components.TabPosition> ->
         CustomIndicator(tabPositions, pagerState)
     }
 
@@ -58,20 +58,18 @@ fun SuitsScreen(
         Text(
             modifier = Modifier
                 .padding(top = 30.dp, bottom = 20.dp)
-                .fillMaxWidth()
-            ,
+                .fillMaxWidth(),
             text = allCards.name,
-            fontFamily = fontFamily,
             fontSize = 36.sp,
             textAlign = TextAlign.Center
         )
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
-            ScrollableTabRow(
+            CustomScrollableTabRow(
                 modifier = Modifier
                     .height(70.dp)
-                    .fillMaxWidth()
+                    .width(400.dp)
                     .align(Alignment.CenterHorizontally)
-                    .padding(vertical = 10.dp, horizontal = 2.dp),
+                    .padding(vertical = 10.dp, horizontal = 18.dp),
                 selectedTabIndex = pagerState.currentPage,
                 indicator = indicator,
                 backgroundColor = BackgroundColor,
