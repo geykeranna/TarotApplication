@@ -1,10 +1,10 @@
 {
-  "id": 1001001,
-  "card_number": 0,
-  "card_name": "",
-  "description": "",
-  "short_description": "",
-  "card_image": "major00",
+  "id": 1001012,
+  "card_number": 11,
+  "card_name": "Правосудие",
+  "description": "Баланс",
+  "short_description": "Баланс",
+  "card_image": "major11",
   "tag_id": [
     {
       "tag_ids": 1001001001,

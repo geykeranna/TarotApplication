@@ -71,7 +71,7 @@ fun DetailCardScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(100.dp)
-                .padding(bottom = 1.dp, top = 30.dp),
+                .padding(bottom = 1.dp, top = 25.dp),
             text = if (card.short_description != "") "${card.card_name}. ${card.short_description}" else card.card_name,
             textAlign = TextAlign.Center,
             fontSize = 38.sp,
@@ -127,6 +127,7 @@ fun DetailCardScreen(
             modifier = Modifier
                 .padding(5.dp)
                 .heightIn(min = 100.dp, max = 900.dp),
+            userScrollEnabled = false,
         ){
             val items = if(cardState) card.category_id else card.category_id_reverse
             items(items=items) {tag ->

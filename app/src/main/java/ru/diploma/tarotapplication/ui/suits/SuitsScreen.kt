@@ -54,7 +54,9 @@ fun SuitsScreen(
         CustomIndicator(tabPositions, pagerState)
     }
 
-    Column {
+    Column(
+        modifier = Modifier.background(BackgroundColor)
+    ) {
         Text(
             modifier = Modifier
                 .padding(top = 30.dp, bottom = 20.dp)
