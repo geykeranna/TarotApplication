@@ -6,7 +6,6 @@ import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.TabPosition
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -46,7 +45,7 @@ fun CustomIndicator(tabPositions: List<TabPosition>, pagerState: PagerState) {
             .offset(x = indicatorStart)
             .wrapContentSize(align = Alignment.BottomStart)
             .width(indicatorEnd - indicatorStart)
-            .padding(2.dp)
+            .padding(0.dp)
             .fillMaxSize()
             .background(color = AccentColor, RoundedCornerShape(50))
             .border(BorderStroke(2.dp, DarkAccentColor), RoundedCornerShape(50))

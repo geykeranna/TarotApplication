@@ -1,21 +1,22 @@
 package ru.diploma.tarotapplication.ui.detailcard
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import com.google.accompanist.flowlayout.FlowMainAxisAlignment
+import com.google.accompanist.flowlayout.FlowRow
+import com.google.accompanist.flowlayout.SizeMode
+import android.annotation.SuppressLint
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import ru.diploma.tarotapplication.R
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.runtime.collectAsState
+import androidx.compose.material.ripple.LocalRippleTheme
+import androidx.compose.material.ripple.RippleAlpha
+import androidx.compose.material.ripple.RippleTheme
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -27,21 +28,36 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.composable
 import dagger.hilt.android.EntryPointAccessors
-import ru.diploma.tarotapplication.data.model.Card
-import ru.diploma.tarotapplication.data.model.Tags
+import ru.diploma.tarotapplication.TarotApplicationApp.Companion.context
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
-import ru.diploma.tarotapplication.ui.detailcard.items.CardInfoLongItems
+import ru.diploma.tarotapplication.ui.components.ExpandableCard
 import ru.diploma.tarotapplication.ui.detailcard.items.CardInfoShortItems
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
 import javax.inject.Inject
 
+@SuppressLint("DiscouragedApi")
 @Composable
 fun DetailCardScreen(
     viewModel: DetailCardViewModel
 ) {
     val card = viewModel.cardData.collectAsState().value
+
+    // отслеживание положения карты: true - прямое, false - перевернутое
+    var cardState by remember { mutableStateOf(true) }
+
+    var angle by remember {
+        mutableStateOf(0f)
+    }
+
+    val cardImgId = remember(card.card_image) {
+        context?.resources?.getIdentifier(
+            card.card_image,
+            "drawable",
+            context?.packageName
+        )
+    }
 
     Column(
         modifier = Modifier
@@ -55,47 +71,70 @@ fun DetailCardScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(100.dp)
-                .padding(bottom = 20.dp, top = 40.dp),
-            text = card.card_name,
+                .padding(bottom = 1.dp, top = 25.dp),
+            text = if (card.short_description != "") "${card.card_name}. ${card.short_description}" else card.card_name,
             textAlign = TextAlign.Center,
             fontSize = 38.sp,
             color = Color.White
         )
-        Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(300.dp)
-                .padding(vertical = 20.dp),
-            painter = painterResource(id = card.card_image),
-            contentDescription = ""
-        )
-        Text(
-            text = card.description,
-            textAlign = TextAlign.Center,
-            fontSize = 18.sp,
-            color = Color.White,
-            fontStyle = FontStyle.Italic
-        )
+        CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
+            cardImgId?.let { painterResource(id = it) }?.let {
+                Image(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(270.dp)
+                        .padding(vertical = 10.dp)
+                        .clickable {
+                            cardState = !cardState
+                            angle = (angle + 180) % 360f
+                        }
+                        .rotate(angle),
+                    painter = it,
+                    contentDescription = ""
+                )
+            }
+        }
+        if (card.description != ""){
+            Text(
+                text = card.description,
+                textAlign = TextAlign.Center,
+                fontSize = 18.sp,
+                color = Color.White,
+                fontStyle = FontStyle.Italic
+            )
+        }
 
-        LazyRow(
-            modifier = Modifier
-                .height(200.dp)
-                .fillMaxWidth()
-                .padding(vertical = 40.dp, horizontal = 10.dp)
-        ){
-            items (items=card.tag_id) { tag ->
-                CardInfoShortItems(tag = tag)
+        if(card.tag_id.isNotEmpty()) {
+            FlowRow(
+                modifier = Modifier
+                    .height(125.dp)
+                    .fillMaxWidth()
+                    .padding(horizontal = 2.dp)
+                    .padding(top = 20.dp, bottom = 1.dp),
+                mainAxisSize = SizeMode.Expand,
+                mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
+                mainAxisSpacing = 10.dp
+            ) {
+                card.tag_id.forEach { tag ->
+                    CardInfoShortItems(
+                        tag = tag,
+                        iconID = viewModel.getIconTagID(tag.icon_id))
+                }
             }
         }
 
         LazyColumn(
             modifier = Modifier
-                .padding(10.dp)
-                .heightIn(min = 10.dp, max = 900.dp)
-            ,
+                .padding(5.dp)
+                .heightIn(min = 100.dp, max = 900.dp),
+            userScrollEnabled = false,
         ){
-            items(items=card.category_id) {tag -> 
-                CardInfoLongItems(tag = tag)
+            val items = if(cardState) card.category_id else card.category_id_reverse
+            items(items=items) {tag ->
+                ExpandableCard(
+                    title = tag.name,
+                    text = tag.value,
+                    icon = viewModel.getIconCategoryID(tag.icon_id))
             }
         }
     }
@@ -142,4 +181,12 @@ class DetailCardScreenFactory @Inject constructor() : NavigationScreenFactory {
             }
         }
     }
+}
+
+private object NoRippleTheme : RippleTheme {
+    @Composable
+    override fun defaultColor() = Color.Unspecified
+
+    @Composable
+    override fun rippleAlpha(): RippleAlpha = RippleAlpha(0.0f,0.0f,0.0f,0.0f)
 }

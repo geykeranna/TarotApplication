@@ -8,10 +8,15 @@ import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.material.ripple.RippleAlpha
 import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
@@ -27,9 +32,9 @@ import kotlinx.coroutines.launch
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
-import ru.diploma.tarotapplication.ui.components.CustomIndicator
-import ru.diploma.tarotapplication.ui.components.SearchBar
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
+import ru.diploma.tarotapplication.ui.components.CustomIndicator
+import ru.diploma.tarotapplication.ui.components.CustomScrollableTabRow
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagerApi::class)
@@ -38,47 +43,51 @@ fun SuitsScreen(
     navController: NavController,
     viewModel: SuitsViewModel
 ) {
-    val suits = viewModel.suitsData.collectAsState().value
-    val pagesItems = suits.map { it.name }
+    val allCards = viewModel.tarotCardCollection.collectAsState().value
+    val suits = viewModel.tarotCardByGroup.collectAsState().value
+    val pagesItems = suits.map { it.value }
 
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
 
-    val indicator = @Composable { tabPositions: List<TabPosition> ->
+    val indicator = @Composable { tabPositions: List<ru.diploma.tarotapplication.ui.components.TabPosition> ->
         CustomIndicator(tabPositions, pagerState)
     }
 
-    Column {
-        SearchBar()
-
+    Column(
+        modifier = Modifier.background(BackgroundColor)
+    ) {
+        Text(
+            modifier = Modifier
+                .padding(top = 30.dp, bottom = 20.dp)
+                .fillMaxWidth(),
+            text = allCards.name,
+            fontSize = 36.sp,
+            textAlign = TextAlign.Center
+        )
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
-            ScrollableTabRow(
+            CustomScrollableTabRow(
                 modifier = Modifier
                     .height(70.dp)
-                    .padding(vertical = 10.dp),
+                    .width(400.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .padding(vertical = 10.dp, horizontal = 18.dp),
                 selectedTabIndex = pagerState.currentPage,
                 indicator = indicator,
                 backgroundColor = BackgroundColor,
+                divider = {}
             ) {
-                pagesItems.forEachIndexed { index, title ->
+                pagesItems.forEachIndexed { index, item ->
                     Tab(
-                        modifier = Modifier.zIndex(6f),
-                        text = {
-                            Text(
-                                text = title,
-                                color = Color.White
-                            )
-                        },
-                        //TODO : сделать иконки вместо текста
-//                    icon = {
-//                           Icon(painter = painterResource(R.drawable.cups), contentDescription = null)
-//                    },
+                        modifier = Modifier
+                            .zIndex(6f)
+                            .paint(painter = painterResource(viewModel.getIconSuitsID(item.first().suits_name))),
                         selected = pagerState.currentPage == index,
                         onClick = {
                             scope.launch {
                                 pagerState.scrollToPage(index)
                             }
-                        }
+                        },
                     )
                 }
             }
@@ -103,7 +112,7 @@ fun SuitsScreen(
                         mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
                         mainAxisSpacing = 10.dp
                     ) {
-                        suits[page].cardsLink.forEachIndexed { _, card ->
+                        pagesItems[page].forEachIndexed { _, card ->
                             CardItem(
                                 item = card,
                                 navController = navController

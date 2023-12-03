@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.diploma.tarotapplication.data.model.TarotSystem
+import ru.diploma.tarotapplication.data.model.TarotDecks
 import ru.diploma.tarotapplication.domain.repositories.TarotSystemRepository
 import ru.diploma.tarotapplication.ui.base.BaseEvent
 import ru.diploma.tarotapplication.ui.base.BaseViewModel
@@ -17,10 +17,10 @@ class HomeViewModel @Inject constructor(
     private val systemRepository: TarotSystemRepository
 ) : BaseViewModel<HomeViewModel.Event>() {
 
-    val systemData: StateFlow<List<TarotSystem>>
+    val systemData: StateFlow<List<TarotDecks>>
         get() = _systemData.asStateFlow()
 
-    private val _systemData = MutableStateFlow(TarotSystem.shimmerData)
+    private val _systemData = MutableStateFlow(listOf<TarotDecks>())
 
     init {
         obtainEvent(Event.OnLoadingStarted)
@@ -41,6 +41,4 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
-
-
 }

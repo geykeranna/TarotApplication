@@ -10,13 +10,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.data.model.Card
-import ru.diploma.tarotapplication.data.model.GroupOfSuits
 import ru.diploma.tarotapplication.domain.repositories.CardRepository
 import ru.diploma.tarotapplication.ui.base.BaseEvent
 import ru.diploma.tarotapplication.ui.base.BaseViewModel
-import ru.diploma.tarotapplication.ui.suits.SuitsViewModel
-
+import ru.diploma.tarotapplication.ui.components.iconsMap
 
 class DetailCardViewModel @AssistedInject constructor(
     @Assisted
@@ -24,13 +23,17 @@ class DetailCardViewModel @AssistedInject constructor(
     private val cardRepository: CardRepository
 ) : BaseViewModel<DetailCardViewModel.Event>() {
 
+    fun getIconCategoryID(name: String) = iconsMap.getOrDefault(name, R.drawable.def)
+
+    fun getIconTagID(name: String) = iconsMap.getOrDefault(name, R.drawable.def)
+
     val cardData: StateFlow<Card>
         get() = _cardData.asStateFlow()
 
     private val _cardData = MutableStateFlow(Card.shimmerData)
 
     private fun startLoading(cardId: Long) = viewModelScope.launch {
-        _cardData.emit(cardRepository.getCardByID(cardId))
+        _cardData.emit(cardRepository.getItemByID(cardId))
     }
 
     override fun obtainEvent(event: Event) {
@@ -57,7 +60,6 @@ class DetailCardViewModel @AssistedInject constructor(
             cardId: Long
         ): DetailCardViewModel
     }
-
     @Suppress("UNCHECKED_CAST")
     companion object {
         fun provideFactory(

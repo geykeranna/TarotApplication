@@ -1,0 +1,552 @@
+{
+  "id": 1003,
+  "name": "Таро Манара",
+  "cards_link": [
+    {
+      "card_id": 1003101,
+      "card_name": "Шут",
+      "card_number": 0,
+      "suits_name": "major",
+      "img_id": "manara_major00"
+    },
+    {
+      "card_id": 1003102,
+      "card_name": "Маг",
+      "card_number": 1,
+      "suits_name": "major",
+      "img_id": "manara_major01"
+    },
+    {
+      "card_id": 1003103,
+      "card_name": "Жрица",
+      "card_number": 2,
+      "suits_name": "major",
+      "img_id": "manara_major02"
+    },
+    {
+      "card_id": 1003104,
+      "card_name": "Императрица",
+      "card_number": 3,
+      "suits_name": "major",
+      "img_id": "manara_major03"
+    },
+    {
+      "card_id": 1003105,
+      "card_name": "Император",
+      "card_number": 4,
+      "suits_name": "major",
+      "img_id": "manara_major04"
+    },
+    {
+      "card_id": 1003106,
+      "card_name": "Жрец",
+      "card_number": 5,
+      "suits_name": "major",
+      "img_id": "manara_major05"
+    },
+    {
+      "card_id": 1003107,
+      "card_name": "Влюбленные",
+      "card_number": 6,
+      "suits_name": "major",
+      "img_id": "manara_major06"
+    },
+    {
+      "card_id": 1003108,
+      "card_name": "Колесница",
+      "card_number": 7,
+      "suits_name": "major",
+      "img_id": "manara_major07"
+    },
+    {
+      "card_id": 1003109,
+      "card_name": "Правосудие",
+      "card_number": 8,
+      "suits_name": "major",
+      "img_id": "manara_major08"
+    },
+    {
+      "card_id": 1003110,
+      "card_name": "Отшельник",
+      "card_number": 9,
+      "suits_name": "major",
+      "img_id": "manara_major09"
+    },
+    {
+      "card_id": 1003111,
+      "card_name": "Зеркало",
+      "card_number": 10,
+      "suits_name": "major",
+      "img_id": "manara_major10"
+    },
+    {
+      "card_id": 1003112,
+      "card_name": "Сила",
+      "card_number": 11,
+      "suits_name": "major",
+      "img_id": "manara_major11"
+    },
+    {
+      "card_id": 1003113,
+      "card_name": "Наказание (Повешенный)",
+      "card_number": 12,
+      "suits_name": "major",
+      "img_id": "manara_major12"
+    },
+    {
+      "card_id": 1003114,
+      "card_name": "Смерть",
+      "card_number": 13,
+      "suits_name": "major",
+      "img_id": "manara_major13"
+    },
+    {
+      "card_id": 1003115,
+      "card_name": "Умеренность",
+      "card_number": 14,
+      "suits_name": "major",
+      "img_id": "manara_major14"
+    },
+    {
+      "card_id": 1003116,
+      "card_name": "Дьявол",
+      "card_number": 15,
+      "suits_name": "major",
+      "img_id": "manara_major15"
+    },
+    {
+      "card_id": 1003117,
+      "card_name": "Башня",
+      "card_number": 16,
+      "suits_name": "major",
+      "img_id": "manara_major16"
+    },
+    {
+      "card_id": 1003118,
+      "card_name": "Звезда",
+      "card_number": 17,
+      "suits_name": "major",
+      "img_id": "manara_major17"
+    },
+    {
+      "card_id": 1003119,
+      "card_name": "Луна",
+      "card_number": 18,
+      "suits_name": "major",
+      "img_id": "manara_major18"
+    },
+    {
+      "card_id": 1003120,
+      "card_name": "Солнце",
+      "card_number": 19,
+      "suits_name": "major",
+      "img_id": "manara_major19"
+    },
+    {
+      "card_id": 1003121,
+      "card_name": "Суд",
+      "card_number": 20,
+      "suits_name": "major",
+      "img_id": "manara_major20"
+    },
+    {
+      "card_id": 1003122,
+      "card_name": "Мир",
+      "card_number": 21,
+      "suits_name": "major",
+      "img_id": "manara_major21"
+    },
+    {
+      "card_id": 1003123,
+      "card_name": "Туз воды",
+      "card_number": 22,
+      "suits_name": "element_water",
+      "img_id": "manara_1water"
+    },
+    {
+      "card_id": 1003124,
+      "card_name": "Двойка воды",
+      "card_number": 23,
+      "suits_name": "element_water",
+      "img_id": "manara_2water"
+    },
+    {
+      "card_id": 1003125,
+      "card_name": "Тройка воды",
+      "card_number": 24,
+      "suits_name": "element_water",
+      "img_id": "manara_3water"
+    },
+    {
+      "card_id": 1003126,
+      "card_name": "Четверка воды",
+      "card_number": 25,
+      "suits_name": "element_water",
+      "img_id": "manara_4water"
+    },
+    {
+      "card_id": 1003127,
+      "card_name": "Пятерка воды",
+      "card_number": 26,
+      "suits_name": "element_water",
+      "img_id": "manara_5water"
+    },
+    {
+      "card_id": 1003128,
+      "card_name": "Шестерка воды",
+      "card_number": 27,
+      "suits_name": "element_water",
+      "img_id": "manara_6water"
+    },
+    {
+      "card_id": 1003129,
+      "card_name": "Семерка воды",
+      "card_number": 28,
+      "suits_name": "element_water",
+      "img_id": "manara_7water"
+    },
+    {
+      "card_id": 1003130,
+      "card_name": "Восьмерка воды",
+      "card_number": 29,
+      "suits_name": "element_water",
+      "img_id": "manara_8water"
+    },
+    {
+      "card_id": 1003131,
+      "card_name": "Девятка воды",
+      "card_number": 30,
+      "suits_name": "element_water",
+      "img_id": "manara_9water"
+    },
+    {
+      "card_id": 1003132,
+      "card_name": "Десятка воды",
+      "card_number": 31,
+      "suits_name": "element_water",
+      "img_id": "manara_10water"
+    },
+    {
+      "card_id": 1003133,
+      "card_name": "Слуга воды",
+      "card_number": 32,
+      "suits_name": "element_water",
+      "img_id": "manara_sluga_water"
+    },
+    {
+      "card_id": 1003134,
+      "card_name": "Всадница воды",
+      "card_number": 33,
+      "suits_name": "element_water",
+      "img_id": "manara_vsadnica_water"
+    },
+    {
+      "card_id": 1003135,
+      "card_name": "Королева воды",
+      "card_number": 34,
+      "suits_name": "element_water",
+      "img_id": "manara_koroleva_water"
+    },
+    {
+      "card_id": 1003136,
+      "card_name": "Король воды",
+      "card_number": 35,
+      "suits_name": "element_water",
+      "img_id": "manara_korol_water"
+    },
+    {
+      "card_id": 1003137,
+      "card_name": "Туз огня",
+      "card_number": 36,
+      "suits_name": "element_fire",
+      "img_id": "manara_1fire"
+    },
+    {
+      "card_id": 1003138,
+      "card_number": 37,
+      "card_name": "Двойка огня",
+      "suits_name": "element_fire",
+      "img_id": "manara_2fire"
+    },
+    {
+      "card_id": 1003139,
+      "card_name": "Тройка огня",
+      "card_number": 38,
+      "suits_name": "element_fire",
+      "img_id": "manara_3fire"
+    },
+    {
+      "card_id": 1003140,
+      "card_name": "Четверка огня",
+      "card_number": 39,
+      "suits_name": "element_fire",
+      "img_id": "manara_4fire"
+    },
+    {
+      "card_id": 1003141,
+      "card_name": "Пятерка огня",
+      "card_number": 40,
+      "suits_name": "element_fire",
+      "img_id": "manara_5fire"
+    },
+    {
+      "card_id": 1003142,
+      "card_name": "Шестерка огня",
+      "card_number": 41,
+      "suits_name": "element_fire",
+      "img_id": "manara_6fire"
+    },
+    {
+      "card_id": 1003143,
+      "card_name": "Семерка огня",
+      "card_number": 42,
+      "suits_name": "element_fire",
+      "img_id": "manara_7fire"
+    },
+    {
+      "card_id": 1003144,
+      "card_name": "Восьмерка огня",
+      "card_number": 43,
+      "suits_name": "element_fire",
+      "img_id": "manara_8fire"
+    },
+    {
+      "card_id": 1003145,
+      "card_name": "Девятка огня",
+      "card_number": 44,
+      "suits_name": "element_fire",
+      "img_id": "manara_9fire"
+    },
+    {
+      "card_id": 1003146,
+      "card_name": "Десятка огня",
+      "card_number": 45,
+      "suits_name": "element_fire",
+      "img_id": "manara_10fire"
+    },
+    {
+      "card_id": 1003147,
+      "card_name": "Слуга огня",
+      "card_number": 46,
+      "suits_name": "element_fire",
+      "img_id": "manara_sluga_fire"
+    },
+    {
+      "card_id": 1003148,
+      "card_name": "Всадница огня",
+      "card_number": 47,
+      "suits_name": "element_fire",
+      "img_id": "manara_vsadnica_fire"
+    },
+    {
+      "card_id": 1003149,
+      "card_name": "Королева огня",
+      "card_number": 48,
+      "suits_name": "element_fire",
+      "img_id": "manara_koroleva_fire"
+    },
+    {
+      "card_id": 1003150,
+      "card_name": "Король огня",
+      "card_number": 49,
+      "suits_name": "element_fire",
+      "img_id": "manara_korol_fire"
+    },
+    {
+      "card_id": 1003151,
+      "card_name": "Туз земли",
+      "card_number": 50,
+      "suits_name": "element_earth",
+      "img_id": "manara_1earth"
+    },
+    {
+      "card_id": 1003152,
+      "card_number": 51,
+      "card_name": "Двойка земли",
+      "suits_name": "element_earth",
+      "img_id": "manara_2earth"
+    },
+    {
+      "card_id": 1003153,
+      "card_name": "Тройка земли",
+      "card_number": 52,
+      "suits_name": "element_earth",
+      "img_id": "manara_3earth"
+    },
+    {
+      "card_id": 1003154,
+      "card_name": "Четверка земли",
+      "card_number": 53,
+      "suits_name": "element_earth",
+      "img_id": "manara_4earth"
+    },
+    {
+      "card_id": 1003155,
+      "card_name": "Пятерка земли",
+      "card_number": 54,
+      "suits_name": "element_earth",
+      "img_id": "manara_5earth"
+    },
+    {
+      "card_id": 1003156,
+      "card_name": "Шестерка земли",
+      "card_number": 55,
+      "suits_name": "element_earth",
+      "img_id": "manara_6earth"
+    },
+    {
+      "card_id": 1003157,
+      "card_name": "Семерка земли",
+      "card_number": 56,
+      "suits_name": "element_earth",
+      "img_id": "manara_7earth"
+    },
+    {
+      "card_id": 1003158,
+      "card_name": "Восьмерка земли",
+      "card_number": 57,
+      "suits_name": "element_earth",
+      "img_id": "manara_8earth"
+    },
+    {
+      "card_id": 1003159,
+      "card_name": "Девятка земли",
+      "card_number": 58,
+      "suits_name": "element_earth",
+      "img_id": "manara_9earth"
+    },
+    {
+      "card_id": 1003160,
+      "card_name": "Десятка земли",
+      "card_number": 59,
+      "suits_name": "element_earth",
+      "img_id": "manara_10earth"
+    },
+    {
+      "card_id": 1003161,
+      "card_name": "Слуга земли",
+      "card_number": 60,
+      "suits_name": "element_earth",
+      "img_id": "manara_sluga_earth"
+    },
+    {
+      "card_id": 1003162,
+      "card_name": "Всадница земли",
+      "card_number": 61,
+      "suits_name": "element_earth",
+      "img_id": "manara_vsadnica_earth"
+    },
+    {
+      "card_id": 1003163,
+      "card_name": "Королева земли",
+      "card_number": 62,
+      "suits_name": "element_earth",
+      "img_id": "manara_koroleva_earth"
+    },
+    {
+      "card_id": 1003164,
+      "card_name": "Король земли",
+      "card_number": 63,
+      "suits_name": "element_earth",
+      "img_id": "manara_korol_earth"
+    },
+    {
+      "card_id": 1001165,
+      "card_name": "Туз воздуха",
+      "card_number": 64,
+      "suits_name": "element_wind",
+      "img_id": "manara_1wind"
+    },
+    {
+      "card_id": 1001166,
+      "card_number": 65,
+      "card_name": "Двойка воздуха",
+      "suits_name": "element_wind",
+      "img_id": "manara_2wind"
+    },
+    {
+      "card_id": 1001167,
+      "card_name": "Тройка воздуха",
+      "card_number": 66,
+      "suits_name": "element_wind",
+      "img_id": "manara_3wind"
+    },
+    {
+      "card_id": 1001168,
+      "card_name": "Четверка воздуха",
+      "card_number": 67,
+      "suits_name": "element_wind",
+      "img_id": "manara_4wind"
+    },
+    {
+      "card_id": 1001169,
+      "card_name": "Пятерка воздуха",
+      "card_number": 68,
+      "suits_name": "element_wind",
+      "img_id": "manara_5wind"
+    },
+    {
+      "card_id": 1001170,
+      "card_name": "Шестерка воздуха",
+      "card_number": 69,
+      "suits_name": "element_wind",
+      "img_id": "manara_6wind"
+    },
+    {
+      "card_id": 1001171,
+      "card_name": "Семерка воздуха",
+      "card_number": 70,
+      "suits_name": "element_wind",
+      "img_id": "manara_7wind"
+    },
+    {
+      "card_id": 1001172,
+      "card_name": "Восьмерка воздуха",
+      "card_number": 71,
+      "suits_name": "element_wind",
+      "img_id": "manara_8wind"
+    },
+    {
+      "card_id": 1001173,
+      "card_name": "Девятка воздуха",
+      "card_number": 72,
+      "suits_name": "element_wind",
+      "img_id": "manara_9wind"
+    },
+    {
+      "card_id": 1001174,
+      "card_name": "Десятка воздуха",
+      "card_number": 73,
+      "suits_name": "element_wind",
+      "img_id": "manara_10wind"
+    },
+    {
+      "card_id": 1001175,
+      "card_name": "Слуга воздуха",
+      "card_number": 74,
+      "suits_name": "element_wind",
+      "img_id": "manara_sluga_wind"
+    },
+    {
+      "card_id": 1001176,
+      "card_name": "Всадница воздуха",
+      "card_number": 75,
+      "suits_name": "element_wind",
+      "img_id": "manara_vsadnica_wind"
+    },
+    {
+      "card_id": 1001177,
+      "card_name": "Королева воздуха",
+      "card_number": 76,
+      "suits_name": "element_wind",
+      "img_id": "manara_koroleva_wind"
+    },
+    {
+      "card_id": 1001178,
+      "card_name": "Король воздуха",
+      "card_number": 77,
+      "suits_name": "element_wind",
+      "img_id": "manara_korol_wind"
+    }
+  ]
+}

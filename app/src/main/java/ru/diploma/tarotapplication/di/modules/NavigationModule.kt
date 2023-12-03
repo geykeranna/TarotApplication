@@ -16,7 +16,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 interface NavigationModule {
-
     @IntoSet
     @Binds
     @Singleton

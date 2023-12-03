@@ -23,10 +23,8 @@ interface SingletonBinds {
     fun bindTarotSystemRepository(tarotSystemRepositoryImpl: TarotSystemRepositoryImpl) : TarotSystemRepository
 
     @Binds
-    @Singleton
     fun bindGroupOfSuitsRepository(groupOfSuitsRepositoryImpl: GroupOfSuitsRepositoryImpl) : GroupOfSuitsRepository
 
     @Binds
-    @Singleton
     fun bindDetailCardRepository(cardRepositoryImpl: CardRepositoryImpl) : CardRepository
 }
