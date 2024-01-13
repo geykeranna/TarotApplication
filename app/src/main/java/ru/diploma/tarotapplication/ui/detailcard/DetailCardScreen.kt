@@ -28,6 +28,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.composable
 import dagger.hilt.android.EntryPointAccessors
+import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.TarotApplicationApp.Companion.context
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
@@ -40,7 +41,8 @@ import javax.inject.Inject
 @SuppressLint("DiscouragedApi")
 @Composable
 fun DetailCardScreen(
-    viewModel: DetailCardViewModel
+    viewModel: DetailCardViewModel,
+    navController: NavController
 ) {
     val card = viewModel.cardData.collectAsState().value
 
@@ -48,7 +50,7 @@ fun DetailCardScreen(
     var cardState by remember { mutableStateOf(true) }
 
     var angle by remember {
-        mutableStateOf(0f)
+        mutableFloatStateOf(0f)
     }
 
     val cardImgId = remember(card.card_image) {
@@ -67,16 +69,37 @@ fun DetailCardScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        Text(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(100.dp)
-                .padding(bottom = 1.dp, top = 25.dp),
-            text = if (card.short_description != "") "${card.card_name}. ${card.short_description}" else card.card_name,
-            textAlign = TextAlign.Center,
-            fontSize = 38.sp,
-            color = Color.White
-        )
+                .padding(bottom = 5.dp, top = 18.dp)
+                .padding(horizontal = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+            Image(
+                modifier = Modifier.clickable {
+                    navController.popBackStack()
+                }.padding(horizontal = 10.dp),
+                painter = painterResource(id = R.drawable.ic_back),
+                contentDescription = "back button",
+            )
+            Text(
+                text = if (card.short_description != "") "${card.card_name}. ${card.short_description}" else card.card_name,
+                textAlign = TextAlign.Center,
+                fontSize = 38.sp,
+                color = Color.White,
+            )
+            Image(
+                modifier = Modifier
+                    .padding(horizontal = 10.dp)
+                    .size(0.dp),
+                painter = painterResource(id = R.drawable.ic_back),
+                contentDescription = "",
+            )
+        }
+
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
             cardImgId?.let { painterResource(id = it) }?.let {
                 Image(
@@ -176,7 +199,8 @@ class DetailCardScreenFactory @Inject constructor() : NavigationScreenFactory {
                 DetailCardScreen(
                     viewModel = detailCardViewModel(
                         cardId = cardId
-                    )
+                    ),
+                    navController = navGraph,
                 )
             }
         }

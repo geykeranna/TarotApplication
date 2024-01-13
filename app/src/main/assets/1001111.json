@@ -2,8 +2,8 @@
   "id": 1001011,
   "card_number": 10,
   "card_name": "Колесо Фортуны",
-  "description": "Смысл",
-  "short_description": "Все проходит, и это пройдет.",
+  "description": "Все проходит, и это пройдет.",
+  "short_description": "Смысл",
   "card_image": "major10",
   "tag_id": [
     {
