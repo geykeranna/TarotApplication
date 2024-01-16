@@ -149,7 +149,7 @@ fun DetailCardScreen(
         LazyColumn(
             modifier = Modifier
                 .padding(5.dp)
-                .heightIn(min = 100.dp, max = 900.dp),
+                .heightIn(min = 100.dp, max = 9500.dp),
             userScrollEnabled = false,
         ){
             val items = if(cardState) card.category_id else card.category_id_reverse

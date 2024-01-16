@@ -261,7 +261,7 @@ fun CustomScrollableTabRow(
                 .clipToBounds()
         ) { constraints ->
             val minTabWidth = ScrollableTabRowMinimumTabWidth.roundToPx()
-            val padding = edgePadding.roundToPx()
+            val padding = 0
             val tabConstraints = constraints.copy(minWidth = minTabWidth)
 
             val tabPlaceables = subcompose(TabSlots.Tabs, tabs)
