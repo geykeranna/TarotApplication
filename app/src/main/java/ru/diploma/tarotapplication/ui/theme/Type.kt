@@ -12,13 +12,17 @@ val fontFamily = FontFamily(
     Font(R.font.ametist, FontWeight.Normal),
 )
 
-val fontKreadonFamily = FontFamily(
-    Font(R.font.kreadon, FontWeight.Normal),
+//val fontKreadonFamily = FontFamily(
+//    Font(R.font.kreadon, FontWeight.Normal),
+//)
+
+val fontJejuMyeongjoFamily = FontFamily(
+    Font(R.font.jejumyeongjo, FontWeight.Normal),
 )
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(
-        fontFamily = fontKreadonFamily,
+        fontFamily = fontJejuMyeongjoFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 30.sp

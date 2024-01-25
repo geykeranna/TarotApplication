@@ -1,6 +1,8 @@
 package ru.diploma.tarotapplication.ui.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
@@ -13,8 +15,9 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -25,9 +28,12 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
+import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.suits.NoRippleTheme
+import ru.diploma.tarotapplication.ui.theme.BackgroundColor
+import ru.diploma.tarotapplication.ui.theme.TextColor
 import javax.inject.Inject
 import kotlin.math.absoluteValue
 
@@ -44,31 +50,85 @@ fun HomeScreen(
         pageCount = { data.size }
     )
 
-    Column {
-        Text(
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(BackgroundColor)
+    ) {
+        Card{
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(180.dp)
+                    .padding(vertical = 10.dp)
+                    .background(BackgroundColor)
+                ,
+                painter = painterResource(id = R.drawable.header_img),
+                contentDescription = ""
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 130.dp)
+                    .background(BackgroundColor)
+                    .height(55.dp),
+                text = stringResource(id = R.string.app_name),
+                fontSize = 49.sp,
+                fontWeight = FontWeight.Normal,
+                color = TextColor,
+                textAlign = TextAlign.Center
+            )
+        }
+
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 30.dp)
-                .height(55.dp),
-            text = "Tarot",
-            fontSize = 49.sp,
-            fontWeight = FontWeight.Normal,
-            color = Color.White,
-            textAlign = TextAlign.Center
-        )
+                .height(110.dp)
+                .padding(horizontal = 20.dp)
+                .padding(top = 10.dp)
+        ) {
+            Image(
+                modifier = Modifier
+                    .width(20.dp)
+                    .fillMaxHeight(),
+                painter = painterResource(id = R.drawable.elem_img),
+                contentDescription = ""
+            )
+            Text(
+                modifier = Modifier
+                    .background(BackgroundColor)
+                    .height(120.dp)
+                    .weight(1F)
+                    .padding(horizontal = 20.dp)
+                ,
+                lineHeight = 16.sp,
+                text = "Таро Уэйта — поможет вам разобраться в себе и своих чувствах, отделить истинные желания от ложных, найти свой путь в жизни, увидеть решение сложной ситуации и понять намерения других людей.",
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Normal,
+                color = TextColor,
+                textAlign = TextAlign.Center
+            )
+            Image(
+                modifier = Modifier
+                    .width(20.dp)
+                    .fillMaxHeight(),
+                painter = painterResource(id = R.drawable.elem_img),
+                contentDescription = ""
+            )
+        }
 
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
             HorizontalPager(
                 state = pagerState,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(600.dp)
+                    .height(350.dp)
                     .align(Alignment.CenterHorizontally)
                 ,
                 beyondBoundsPageCount = 3,
-                pageSize = PageSize.Fixed(260.dp),
-                pageSpacing = 2.dp,
-                contentPadding = PaddingValues(horizontal = 62.dp),
+                pageSize = PageSize.Fixed(180.dp),
+                pageSpacing = 0.dp,
+                contentPadding = PaddingValues(horizontal = 114.dp),
             ) {page ->
                 Card(
                     Modifier
@@ -92,8 +152,9 @@ fun HomeScreen(
                                 fraction = 1f - pageOffset.coerceIn(0f, 1f)
                             )
                         }
-                        .fillMaxWidth()
-                        .height(440.dp)
+                        .width(155.dp)
+                        .height(280.dp)
+                        .padding(0.dp)
                         .align(Alignment.CenterHorizontally)
                 ) {
                     TarotSystemCard(
@@ -102,6 +163,39 @@ fun HomeScreen(
                     )
                 }
             }
+        }
+        
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 20.dp)
+                .background(BackgroundColor)
+                .padding(0.dp)
+        ) {
+            Image(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .padding(0.dp),
+                painter = painterResource(id = R.drawable.footer_left),
+                contentDescription = ""
+            )
+            Image(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .padding(0.dp),
+                painter = painterResource(id = R.drawable.footer_center),
+                contentDescription = ""
+            )
+            Image(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .padding(0.dp),
+                painter = painterResource(id = R.drawable.footer_right),
+                contentDescription = ""
+            )
         }
     }
 }
