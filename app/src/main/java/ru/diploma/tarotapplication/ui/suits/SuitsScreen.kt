@@ -2,7 +2,9 @@ package ru.diploma.tarotapplication.ui.suits
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.*
 import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.material.ripple.RippleAlpha
@@ -21,14 +23,12 @@ import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.composable
-import com.google.accompanist.flowlayout.FlowMainAxisAlignment
-import com.google.accompanist.flowlayout.FlowRow
-import com.google.accompanist.flowlayout.SizeMode
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.launch
+import ru.diploma.tarotapplication.data.model.InfoCard
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
@@ -100,30 +100,25 @@ fun SuitsScreen(
             count = pagesItems.size,
             state = pagerState,
         ) { page ->
-            LazyColumn(
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(3),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 15.dp)
-            ) {
-                item {
-                    FlowRow(
-                        modifier = Modifier.fillMaxSize(),
-                        mainAxisSize = SizeMode.Expand,
-                        mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
-                        mainAxisSpacing = 10.dp
-                    ) {
-                        pagesItems[page].forEachIndexed { _, card ->
-                            CardItem(
-                                item = card,
-                                navController = navController
-                            )
-                        }
-                    }
+                ,
+                horizontalArrangement = Arrangement.SpaceEvenly,
+            ){
+                items(
+                    pagesItems[page]
+                ){card: InfoCard ->
+                    CardItem(
+                        item = card,
+                        navController = navController
+                    )
                 }
             }
         }
     }
-
 }
 
 object NoRippleTheme : RippleTheme {

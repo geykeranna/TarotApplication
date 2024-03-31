@@ -60,7 +60,6 @@ fun HomeScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(180.dp)
-                    .padding(vertical = 10.dp)
                     .background(BackgroundColor)
                 ,
                 painter = painterResource(id = R.drawable.header_img),
