@@ -79,41 +79,51 @@ fun HomeScreen(
             )
         }
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(110.dp)
-                .padding(horizontal = 20.dp)
-                .padding(top = 10.dp)
-        ) {
-            Image(
+        CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
+            HorizontalPager(
+                state = pagerState,
                 modifier = Modifier
-                    .width(20.dp)
-                    .fillMaxHeight(),
-                painter = painterResource(id = R.drawable.elem_img),
-                contentDescription = ""
-            )
-            Text(
-                modifier = Modifier
-                    .background(BackgroundColor)
-                    .height(120.dp)
-                    .weight(1F)
-                    .padding(horizontal = 20.dp)
+                    .fillMaxWidth()
+                    .height(110.dp)
+                    .align(Alignment.CenterHorizontally)
                 ,
-                lineHeight = 16.sp,
-                text = "Таро Уэйта — поможет вам разобраться в себе и своих чувствах, отделить истинные желания от ложных, найти свой путь в жизни, увидеть решение сложной ситуации и понять намерения других людей.",
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Normal,
-                color = TextColor,
-                textAlign = TextAlign.Center
-            )
-            Image(
-                modifier = Modifier
-                    .width(20.dp)
-                    .fillMaxHeight(),
-                painter = painterResource(id = R.drawable.elem_img),
-                contentDescription = ""
-            )
+                beyondBoundsPageCount = data.size,
+                pageSize = PageSize.Fill,
+                pageSpacing = 0.dp,
+                contentPadding = PaddingValues(horizontal = 0.dp),
+            ) {page ->
+                Card(
+                    Modifier
+                        .graphicsLayer {
+                            val pageOffset =
+                                ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
+                            lerp(
+                                start = 0.85f,
+                                stop = 1f,
+                                fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                            ).also { scale ->
+                                scaleX = scale
+                                scaleY = scale
+                            }
+                            // We animate the alpha, between 50% and 100%
+                            alpha = lerp(
+                                start = 0.5f,
+                                stop = 1f,
+                                fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                            )
+                        }
+                        .fillMaxSize()
+                        .padding(0.dp)
+                        .align(Alignment.CenterHorizontally)
+                ) {
+                    data[page].description?.let {
+                        DescriptionRow(
+                            text = it,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
+            }
         }
 
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
@@ -121,20 +131,20 @@ fun HomeScreen(
                 state = pagerState,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(350.dp)
+                    .padding(top = 10.dp)
+                    .height(340.dp)
                     .align(Alignment.CenterHorizontally)
                 ,
                 beyondBoundsPageCount = 3,
                 pageSize = PageSize.Fixed(180.dp),
                 pageSpacing = 0.dp,
-                contentPadding = PaddingValues(horizontal = 114.dp),
+                contentPadding = PaddingValues(horizontal = 100.dp),
             ) {page ->
                 Card(
                     Modifier
                         .graphicsLayer {
                             val pageOffset =
                                 ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
-
                             lerp(
                                 start = 0.85f,
                                 stop = 1f,
@@ -151,14 +161,15 @@ fun HomeScreen(
                                 fraction = 1f - pageOffset.coerceIn(0f, 1f)
                             )
                         }
-                        .width(155.dp)
-                        .height(280.dp)
+                        .width(195.dp)
+                        .height(480.dp)
                         .padding(0.dp)
                         .align(Alignment.CenterHorizontally)
                 ) {
                     TarotSystemCard(
                         tarotDecks = data[page],
-                        navController = navController
+                        navController = navController,
+                        modifier = Modifier.size(195.dp, 480.dp)
                     )
                 }
             }

@@ -4,10 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,12 +20,12 @@ import ru.diploma.tarotapplication.ui.suits.SuitsScreenFactory
 @Composable
 fun TarotSystemCard(
     tarotDecks: TarotDecks,
-    navController: NavController
+    navController: NavController,
+    modifier: Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(0.dp)
-            .size(155.dp, 280.dp)
             .fillMaxSize()
             .clickable {
                 navController.navigate(SuitsScreenFactory.route + "/${tarotDecks.id}")
@@ -37,10 +34,8 @@ fun TarotSystemCard(
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Image(
-            modifier = Modifier
-                .height(280.dp)
-                .width(155.dp)
-                .size(80.dp)
+            modifier = modifier
+                .fillMaxSize()
                 .padding(0.dp, 0.dp)
                 .clip(RoundedCornerShape(10.dp))
             ,
