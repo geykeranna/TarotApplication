@@ -33,7 +33,6 @@ import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.suits.NoRippleTheme
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
-import ru.diploma.tarotapplication.ui.theme.TextColor
 import javax.inject.Inject
 import kotlin.math.absoluteValue
 
@@ -74,7 +73,6 @@ fun HomeScreen(
                 text = stringResource(id = R.string.app_name),
                 fontSize = 49.sp,
                 fontWeight = FontWeight.Normal,
-                color = TextColor,
                 textAlign = TextAlign.Center
             )
         }
@@ -87,7 +85,7 @@ fun HomeScreen(
                     .height(110.dp)
                     .align(Alignment.CenterHorizontally)
                 ,
-                beyondBoundsPageCount = data.size,
+                beyondBoundsPageCount = data.size + 1,
                 pageSize = PageSize.Fill,
                 pageSpacing = 0.dp,
                 contentPadding = PaddingValues(horizontal = 0.dp),
@@ -135,7 +133,7 @@ fun HomeScreen(
                     .height(340.dp)
                     .align(Alignment.CenterHorizontally)
                 ,
-                beyondBoundsPageCount = 3,
+                beyondBoundsPageCount = data.size,
                 pageSize = PageSize.Fixed(180.dp),
                 pageSpacing = 0.dp,
                 contentPadding = PaddingValues(horizontal = 100.dp),

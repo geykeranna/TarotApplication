@@ -16,9 +16,7 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
@@ -35,6 +33,7 @@ import ru.diploma.tarotapplication.ui.MainActivity
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
 import ru.diploma.tarotapplication.ui.components.CustomIndicator
 import ru.diploma.tarotapplication.ui.components.CustomScrollableTabRow
+import ru.diploma.tarotapplication.ui.components.TopBar
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagerApi::class)
@@ -57,13 +56,10 @@ fun SuitsScreen(
     Column(
         modifier = Modifier.background(BackgroundColor)
     ) {
-        Text(
-            modifier = Modifier
-                .padding(top = 30.dp, bottom = 20.dp)
-                .fillMaxWidth(),
-            text = allCards.name,
-            fontSize = 36.sp,
-            textAlign = TextAlign.Center
+        TopBar(
+            title = allCards.name,
+            navController = navController,
+            modifier = Modifier.padding(bottom = 10.dp)
         )
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
             CustomScrollableTabRow(

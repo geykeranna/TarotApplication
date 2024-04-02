@@ -25,7 +25,8 @@ val Typography = Typography(
         fontFamily = fontJejuMyeongjoFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
-        lineHeight = 30.sp
+        lineHeight = 30.sp,
+        color = TextColor
     )
     /* Other default text styles to override
     button = TextStyle(

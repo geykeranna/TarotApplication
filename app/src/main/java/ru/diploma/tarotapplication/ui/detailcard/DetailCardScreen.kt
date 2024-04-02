@@ -28,12 +28,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.composable
 import dagger.hilt.android.EntryPointAccessors
-import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.TarotApplicationApp.Companion.context
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
 import ru.diploma.tarotapplication.ui.components.ExpandableCard
+import ru.diploma.tarotapplication.ui.components.TopBar
 import ru.diploma.tarotapplication.ui.detailcard.items.CardInfoShortItems
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
 import javax.inject.Inject
@@ -69,36 +69,11 @@ fun DetailCardScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp)
-                .padding(bottom = 5.dp, top = 18.dp)
-                .padding(horizontal = 10.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ){
-            Image(
-                modifier = Modifier.clickable {
-                    navController.popBackStack()
-                }.padding(horizontal = 10.dp),
-                painter = painterResource(id = R.drawable.ic_back),
-                contentDescription = "back button",
-            )
-            Text(
-                text = if (card.short_description != "") "${card.card_name}. ${card.short_description}" else card.card_name,
-                textAlign = TextAlign.Center,
-                fontSize = 38.sp,
-                color = Color.White,
-            )
-            Image(
-                modifier = Modifier
-                    .padding(horizontal = 10.dp)
-                    .size(0.dp),
-                painter = painterResource(id = R.drawable.ic_back),
-                contentDescription = "",
-            )
-        }
+        TopBar(
+            title = if (card.short_description != "") "${card.card_name}. ${card.short_description}" else card.card_name,
+            navController = navController,
+            modifier = Modifier.padding(bottom = 10.dp)
+        )
 
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
             cardImgId?.let { painterResource(id = it) }?.let {

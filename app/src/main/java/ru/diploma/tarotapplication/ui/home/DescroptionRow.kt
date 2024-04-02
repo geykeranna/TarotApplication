@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
-import ru.diploma.tarotapplication.ui.theme.TextColor
 
 @Composable
 fun DescriptionRow(
@@ -46,7 +45,6 @@ fun DescriptionRow(
             text = text,
             fontSize = 15.sp,
             fontWeight = FontWeight.Normal,
-            color = TextColor,
             textAlign = TextAlign.Center
         )
         Image(
