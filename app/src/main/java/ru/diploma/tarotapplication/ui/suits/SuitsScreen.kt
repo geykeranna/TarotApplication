@@ -1,5 +1,6 @@
 package ru.diploma.tarotapplication.ui.suits
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -26,6 +27,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.launch
+import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.data.model.InfoCard
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
@@ -61,48 +63,68 @@ fun SuitsScreen(
             navController = navController,
             modifier = Modifier.padding(bottom = 10.dp)
         )
-        CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
-            CustomScrollableTabRow(
-                modifier = Modifier
-                    .height(70.dp)
-                    .width(244.dp)
-                    .align(Alignment.CenterHorizontally)
-                    .padding(vertical = 10.dp, horizontal = 0.dp),
-                selectedTabIndex = pagerState.currentPage,
-                indicator = indicator,
-                backgroundColor = BackgroundColor,
-                divider = {}
-            ) {
-                pagesItems.forEachIndexed { index, item ->
-                    Tab(
-                        modifier = Modifier
-                            .zIndex(6f)
-                            .paint(painter = painterResource(viewModel.getIconSuitsID(item.first().suits_name))),
-                        selected = pagerState.currentPage == index,
-                        onClick = {
-                            scope.launch {
-                                pagerState.scrollToPage(index)
-                            }
-                        },
-                    )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.elem2_img),
+                contentDescription = "",
+                Modifier.size(30.dp)
+            )
+            CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
+                CustomScrollableTabRow(
+                    modifier = Modifier
+                        .height(50.dp)
+                        .width(244.dp)
+                        .padding(vertical = 0.dp, horizontal = 0.dp),
+                    selectedTabIndex = pagerState.currentPage,
+                    indicator = indicator,
+                    backgroundColor = BackgroundColor,
+                    divider = {}
+                ) {
+                    pagesItems.forEachIndexed { index, item ->
+                        Tab(
+                            modifier = Modifier
+                                .zIndex(6f)
+                                .paint(painter = painterResource(viewModel.getIconSuitsID(item.first().suits_name))),
+                            selected = pagerState.currentPage == index,
+                            onClick = {
+                                scope.launch {
+                                    pagerState.scrollToPage(index)
+                                }
+                            },
+                        )
+                    }
                 }
             }
+            Image(
+                painter = painterResource(id = R.drawable.elem2_img),
+                contentDescription = "",
+                Modifier.size(30.dp)
+            )
         }
+
 
         HorizontalPager(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(top = 5.dp)
                 .background(color = BackgroundColor),
             count = pagesItems.size,
             state = pagerState,
         ) { page ->
             LazyVerticalGrid(
-                columns = GridCells.Fixed(3),
+                columns = GridCells.Adaptive(minSize = 95.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 15.dp)
+                    .padding(horizontal = 10.dp)
                 ,
-                horizontalArrangement = Arrangement.SpaceEvenly,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                contentPadding = PaddingValues(horizontal = 5.dp)
             ){
                 items(
                     pagesItems[page]

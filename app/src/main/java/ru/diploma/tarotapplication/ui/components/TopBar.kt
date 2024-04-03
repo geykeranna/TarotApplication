@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,7 +29,7 @@ fun TopBar(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 20.dp)
-            .padding(bottom = 5.dp, top = 18.dp),
+            .padding(bottom = 5.dp, top = 24.dp),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -37,7 +38,8 @@ fun TopBar(
                 modifier = Modifier
                     .clickable {
                         navController.popBackStack()
-                    },
+                    }
+                    .size(20.dp),
                 painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = "back button",
             )
