@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.material.ripple.RippleAlpha
 import androidx.compose.material.ripple.RippleTheme
@@ -20,7 +22,6 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,13 +29,16 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.composable
 import dagger.hilt.android.EntryPointAccessors
+import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.TarotApplicationApp.Companion.context
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
 import ru.diploma.tarotapplication.ui.components.ExpandableCard
+import ru.diploma.tarotapplication.ui.components.TabRowDefaults.Divider
 import ru.diploma.tarotapplication.ui.components.TopBar
 import ru.diploma.tarotapplication.ui.detailcard.items.CardInfoShortItems
+import ru.diploma.tarotapplication.ui.theme.AccentColor
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
 import javax.inject.Inject
 
@@ -74,44 +78,74 @@ fun DetailCardScreen(
             navController = navController,
             modifier = Modifier.padding(bottom = 10.dp)
         )
+        Row(
+            modifier = Modifier
+                .padding(vertical = 10.dp, horizontal = 20.dp)
+                .fillMaxWidth()
+                .height(350.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Image(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(48.dp),
+                painter = painterResource(id = R.drawable.elem4_img_left),
+                contentDescription = null
+            )
+            Card(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(200.dp)
+                    .border(1.dp, AccentColor, RoundedCornerShape(15.dp))
+                    .clickable {
+                        cardState = !cardState
+                        angle = (angle + 180) % 360f
+                    }
+                    .rotate(angle),
+                backgroundColor = BackgroundColor
 
-        CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
-            cardImgId?.let { painterResource(id = it) }?.let {
-                Image(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(270.dp)
-                        .padding(vertical = 10.dp)
-                        .clickable {
-                            cardState = !cardState
-                            angle = (angle + 180) % 360f
-                        }
-                        .rotate(angle),
-                    painter = it,
-                    contentDescription = ""
-                )
+            ) {
+                CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
+                    cardImgId?.let { painterResource(id = it) }?.let {
+                        Image(
+                            modifier = Modifier
+                                .padding(all = 10.dp),
+                            painter = it,
+                            contentDescription = ""
+                        )
+                    }
+                }
             }
+            Image(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(48.dp),
+                painter = painterResource(id = R.drawable.elem4_img_right),
+                contentDescription = null
+            )
         }
         if (card.description != ""){
             Text(
+                modifier = Modifier.padding(horizontal = 10.dp),
                 text = card.description,
                 textAlign = TextAlign.Center,
-                fontSize = 18.sp,
-                color = Color.White,
-                fontStyle = FontStyle.Italic
+                fontSize = 14.sp,
+                lineHeight = 20.sp
             )
         }
-
+        Divider(
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp),
+            thickness = 1.dp,
+            color = AccentColor
+        )
         if(card.tag_id.isNotEmpty()) {
             FlowRow(
                 modifier = Modifier
-                    .height(125.dp)
                     .fillMaxWidth()
-                    .padding(horizontal = 2.dp)
-                    .padding(top = 20.dp, bottom = 1.dp),
+                    .padding(horizontal = 10.dp, vertical = 10.dp),
                 mainAxisSize = SizeMode.Expand,
                 mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
-                mainAxisSpacing = 10.dp
+                mainAxisSpacing = 0.dp
             ) {
                 card.tag_id.forEach { tag ->
                     CardInfoShortItems(
@@ -120,10 +154,9 @@ fun DetailCardScreen(
                 }
             }
         }
-
         LazyColumn(
             modifier = Modifier
-                .padding(5.dp)
+                .fillMaxWidth()
                 .heightIn(min = 100.dp, max = 9500.dp),
             userScrollEnabled = false,
         ){
@@ -132,7 +165,11 @@ fun DetailCardScreen(
                 ExpandableCard(
                     title = tag.name,
                     text = tag.value,
-                    icon = viewModel.getIconCategoryID(tag.icon_id))
+                    icon = viewModel.getIconCategoryID(tag.icon_id),
+                    modifier = Modifier
+                        .background(BackgroundColor)
+                        .padding(vertical = 5.dp, horizontal = 10.dp))
+
             }
         }
     }

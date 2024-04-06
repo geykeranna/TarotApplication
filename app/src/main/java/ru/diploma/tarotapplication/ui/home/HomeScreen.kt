@@ -77,51 +77,13 @@ fun HomeScreen(
             )
         }
 
-        CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
-            HorizontalPager(
-                state = pagerState,
+        data[pagerState.currentPage].description?.let {
+            DescriptionRow(
+                text = it,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(110.dp)
-                    .align(Alignment.CenterHorizontally)
-                ,
-                beyondBoundsPageCount = data.size + 1,
-                pageSize = PageSize.Fill,
-                pageSpacing = 0.dp,
-                contentPadding = PaddingValues(horizontal = 0.dp),
-            ) {page ->
-                Card(
-                    Modifier
-                        .graphicsLayer {
-                            val pageOffset =
-                                ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
-                            lerp(
-                                start = 0.85f,
-                                stop = 1f,
-                                fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                            ).also { scale ->
-                                scaleX = scale
-                                scaleY = scale
-                            }
-                            // We animate the alpha, between 50% and 100%
-                            alpha = lerp(
-                                start = 0.5f,
-                                stop = 1f,
-                                fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                            )
-                        }
-                        .fillMaxSize()
-                        .padding(0.dp)
-                        .align(Alignment.CenterHorizontally)
-                ) {
-                    data[page].description?.let {
-                        DescriptionRow(
-                            text = it,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
-                }
-            }
+            )
         }
 
         CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
