@@ -1,5 +1,6 @@
 package ru.diploma.tarotapplication.ui.suits
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,16 +16,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.lerp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.composable
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.launch
 import ru.diploma.tarotapplication.R
@@ -37,8 +39,9 @@ import ru.diploma.tarotapplication.ui.components.CustomIndicator
 import ru.diploma.tarotapplication.ui.components.CustomScrollableTabRow
 import ru.diploma.tarotapplication.ui.components.TopBar
 import javax.inject.Inject
+import kotlin.math.absoluteValue
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SuitsScreen(
     navController: NavController,
@@ -48,7 +51,10 @@ fun SuitsScreen(
     val suits = viewModel.tarotCardByGroup.collectAsState().value
     val pagesItems = suits.map { it.value }
 
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(
+        initialPage = 0,
+        pageCount = { suits.size }
+    )
     val scope = rememberCoroutineScope()
 
     val indicator = @Composable { tabPositions: List<ru.diploma.tarotapplication.ui.components.TabPosition> ->
@@ -107,32 +113,53 @@ fun SuitsScreen(
                 Modifier.size(30.dp)
             )
         }
-
-
         HorizontalPager(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = 5.dp)
                 .background(color = BackgroundColor),
-            count = pagesItems.size,
             state = pagerState,
         ) { page ->
-            LazyVerticalGrid(
-                columns = GridCells.Adaptive(minSize = 95.dp),
+            Card(
+                backgroundColor = BackgroundColor,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 10.dp)
-                ,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                contentPadding = PaddingValues(horizontal = 5.dp)
-            ){
-                items(
-                    pagesItems[page]
-                ){card: InfoCard ->
-                    CardItem(
-                        item = card,
-                        navController = navController
+                    .graphicsLayer {
+                    val pageOffset =
+                        ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
+                    lerp(
+                        start = 0.85f,
+                        stop = 1f,
+                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                    ).also { scale ->
+                        scaleX = scale
+                        scaleY = scale
+                    }
+
+                    // We animate the alpha, between 50% and 100%
+                    alpha = lerp(
+                        start = 0.5f,
+                        stop = 1f,
+                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
                     )
+                }
+            ) {
+                LazyVerticalGrid(
+                    columns = GridCells.Adaptive(minSize = 95.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 10.dp)
+                    ,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    contentPadding = PaddingValues(horizontal = 5.dp)
+                ){
+                    items(
+                        pagesItems[page]
+                    ){card: InfoCard ->
+                        CardItem(
+                            item = card,
+                            navController = navController
+                        )
+                    }
                 }
             }
         }

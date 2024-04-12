@@ -12,14 +12,10 @@ import androidx.compose.material.Text
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.ripple.LocalRippleTheme
-import androidx.compose.material.ripple.RippleAlpha
-import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -28,9 +24,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.composable
+import coil.compose.AsyncImage
 import dagger.hilt.android.EntryPointAccessors
 import ru.diploma.tarotapplication.R
-import ru.diploma.tarotapplication.TarotApplicationApp.Companion.context
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
@@ -56,15 +52,6 @@ fun DetailCardScreen(
     var angle by remember {
         mutableFloatStateOf(0f)
     }
-
-    val cardImgId = remember(card.card_image) {
-        context?.resources?.getIdentifier(
-            card.card_image,
-            "drawable",
-            context?.packageName
-        )
-    }
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -105,16 +92,11 @@ fun DetailCardScreen(
                 backgroundColor = BackgroundColor
 
             ) {
-                CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
-                    cardImgId?.let { painterResource(id = it) }?.let {
-                        Image(
-                            modifier = Modifier
-                                .padding(all = 10.dp),
-                            painter = it,
-                            contentDescription = ""
-                        )
-                    }
-                }
+                AsyncImage(
+                    model = "file:///android_asset/${card.card_image}.jpg",
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(all = 10.dp))
             }
             Image(
                 modifier = Modifier
@@ -217,12 +199,4 @@ class DetailCardScreenFactory @Inject constructor() : NavigationScreenFactory {
             }
         }
     }
-}
-
-private object NoRippleTheme : RippleTheme {
-    @Composable
-    override fun defaultColor() = Color.Unspecified
-
-    @Composable
-    override fun rippleAlpha(): RippleAlpha = RippleAlpha(0.0f,0.0f,0.0f,0.0f)
 }
