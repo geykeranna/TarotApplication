@@ -10,37 +10,39 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.ripple.LocalRippleTheme
-import androidx.compose.material.ripple.RippleAlpha
-import androidx.compose.material.ripple.RippleTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.composable
+import coil.compose.AsyncImage
 import dagger.hilt.android.EntryPointAccessors
-import ru.diploma.tarotapplication.TarotApplicationApp.Companion.context
+import ru.diploma.tarotapplication.R
 import ru.diploma.tarotapplication.di.navigation.NavigationFactory
 import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.MainActivity
 import ru.diploma.tarotapplication.ui.components.ExpandableCard
+import ru.diploma.tarotapplication.ui.components.TabRowDefaults.Divider
+import ru.diploma.tarotapplication.ui.components.TopBar
 import ru.diploma.tarotapplication.ui.detailcard.items.CardInfoShortItems
+import ru.diploma.tarotapplication.ui.theme.AccentColor
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
 import javax.inject.Inject
 
 @SuppressLint("DiscouragedApi")
 @Composable
 fun DetailCardScreen(
-    viewModel: DetailCardViewModel
+    viewModel: DetailCardViewModel,
+    navController: NavController
 ) {
     val card = viewModel.cardData.collectAsState().value
 
@@ -48,17 +50,8 @@ fun DetailCardScreen(
     var cardState by remember { mutableStateOf(true) }
 
     var angle by remember {
-        mutableStateOf(0f)
+        mutableFloatStateOf(0f)
     }
-
-    val cardImgId = remember(card.card_image) {
-        context?.resources?.getIdentifier(
-            card.card_image,
-            "drawable",
-            context?.packageName
-        )
-    }
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -67,53 +60,74 @@ fun DetailCardScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        Text(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp)
-                .padding(bottom = 1.dp, top = 25.dp),
-            text = if (card.short_description != "") "${card.card_name}. ${card.short_description}" else card.card_name,
-            textAlign = TextAlign.Center,
-            fontSize = 38.sp,
-            color = Color.White
+        TopBar(
+            title = if (card.short_description != "") "${card.card_name}. ${card.short_description}" else card.card_name,
+            navController = navController,
+            modifier = Modifier.padding(bottom = 10.dp)
         )
-        CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
-            cardImgId?.let { painterResource(id = it) }?.let {
-                Image(
+        Row(
+            modifier = Modifier
+                .padding(vertical = 10.dp, horizontal = 20.dp)
+                .fillMaxWidth()
+                .height(350.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Image(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(48.dp),
+                painter = painterResource(id = R.drawable.elem4_img_left),
+                contentDescription = null
+            )
+            Card(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(200.dp)
+                    .border(1.dp, AccentColor, RoundedCornerShape(15.dp))
+                    .clickable {
+                        cardState = !cardState
+                        angle = (angle + 180) % 360f
+                    }
+                    .rotate(angle),
+                backgroundColor = BackgroundColor
+
+            ) {
+                AsyncImage(
+                    model = "file:///android_asset/${card.card_image}.jpg",
+                    contentDescription = null,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(270.dp)
-                        .padding(vertical = 10.dp)
-                        .clickable {
-                            cardState = !cardState
-                            angle = (angle + 180) % 360f
-                        }
-                        .rotate(angle),
-                    painter = it,
-                    contentDescription = ""
-                )
+                        .padding(all = 10.dp))
             }
+            Image(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(48.dp),
+                painter = painterResource(id = R.drawable.elem4_img_right),
+                contentDescription = null
+            )
         }
         if (card.description != ""){
             Text(
+                modifier = Modifier.padding(horizontal = 10.dp),
                 text = card.description,
                 textAlign = TextAlign.Center,
-                fontSize = 18.sp,
-                color = Color.White,
-                fontStyle = FontStyle.Italic
+                fontSize = 14.sp,
+                lineHeight = 20.sp
             )
         }
-
+        Divider(
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp),
+            thickness = 1.dp,
+            color = AccentColor
+        )
         if(card.tag_id.isNotEmpty()) {
             FlowRow(
                 modifier = Modifier
-                    .height(125.dp)
                     .fillMaxWidth()
-                    .padding(horizontal = 2.dp)
-                    .padding(top = 20.dp, bottom = 1.dp),
+                    .padding(horizontal = 10.dp, vertical = 10.dp),
                 mainAxisSize = SizeMode.Expand,
                 mainAxisAlignment = FlowMainAxisAlignment.SpaceEvenly,
-                mainAxisSpacing = 10.dp
+                mainAxisSpacing = 0.dp
             ) {
                 card.tag_id.forEach { tag ->
                     CardInfoShortItems(
@@ -122,11 +136,10 @@ fun DetailCardScreen(
                 }
             }
         }
-
         LazyColumn(
             modifier = Modifier
-                .padding(5.dp)
-                .heightIn(min = 100.dp, max = 900.dp),
+                .fillMaxWidth()
+                .heightIn(min = 100.dp, max = 9500.dp),
             userScrollEnabled = false,
         ){
             val items = if(cardState) card.category_id else card.category_id_reverse
@@ -134,7 +147,11 @@ fun DetailCardScreen(
                 ExpandableCard(
                     title = tag.name,
                     text = tag.value,
-                    icon = viewModel.getIconCategoryID(tag.icon_id))
+                    icon = viewModel.getIconCategoryID(tag.icon_id),
+                    modifier = Modifier
+                        .background(BackgroundColor)
+                        .padding(vertical = 5.dp, horizontal = 10.dp))
+
             }
         }
     }
@@ -176,17 +193,10 @@ class DetailCardScreenFactory @Inject constructor() : NavigationScreenFactory {
                 DetailCardScreen(
                     viewModel = detailCardViewModel(
                         cardId = cardId
-                    )
+                    ),
+                    navController = navGraph,
                 )
             }
         }
     }
-}
-
-private object NoRippleTheme : RippleTheme {
-    @Composable
-    override fun defaultColor() = Color.Unspecified
-
-    @Composable
-    override fun rippleAlpha(): RippleAlpha = RippleAlpha(0.0f,0.0f,0.0f,0.0f)
 }

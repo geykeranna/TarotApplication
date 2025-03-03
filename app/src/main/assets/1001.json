@@ -60,7 +60,7 @@
     },
     {
       "card_id": 1001109,
-      "card_name": "Правосудие",
+      "card_name": "Сила",
       "card_number": 8,
       "suits_name": "major",
       "img_id": "major08"
@@ -81,7 +81,7 @@
     },
     {
       "card_id": 1001112,
-      "card_name": "Сила",
+      "card_name": "Справедливость",
       "card_number": 11,
       "suits_name": "major",
       "img_id": "major11"

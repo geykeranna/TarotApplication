@@ -3,7 +3,10 @@ package ru.diploma.tarotapplication.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.EntryPoint
@@ -17,6 +20,7 @@ import ru.diploma.tarotapplication.di.navigation.NavigationScreenFactory
 import ru.diploma.tarotapplication.ui.detailcard.DetailCardViewModel
 import ru.diploma.tarotapplication.ui.navigation.NavItem
 import ru.diploma.tarotapplication.ui.suits.SuitsViewModel
+import ru.diploma.tarotapplication.ui.theme.BackgroundColor
 import ru.diploma.tarotapplication.ui.theme.TarotApplicationTheme
 import javax.inject.Inject
 
@@ -34,7 +38,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             TarotApplicationTheme {
                 val navController = rememberNavController()
-                Surface {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(BackgroundColor)
+                ) {
                     NavHost(
                         navController = navController,
                         startDestination = NavItem.MainScreen.route
