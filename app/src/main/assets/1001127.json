@@ -1,10 +1,10 @@
 {
-  "id": 1001100,
-  "card_number": 0,
-  "card_name": "",
-  "description": "",
-  "short_description": "",
-  "card_image": "wands00",
+  "id": 1001127,
+  "card_number": 25,
+  "card_name": "5 Жезлов",
+  "description": "Борьба",
+  "short_description": "Соперничество",
+  "card_image": "wands05",
   "tag_id": [
     {
       "tag_ids": 1001001001,
@@ -14,15 +14,15 @@
     },
     {
       "tag_ids": 1001001002,
-      "icon_id": "",
+      "icon_id": "zodiac_lion",
       "name": "Знак зодиака",
-      "value": ""
+      "value": "Лев"
     },
     {
       "tag_ids": 1001001003,
-      "icon_id": "",
+      "icon_id": "element_fire",
       "name": "Стихия",
-      "value": ""
+      "value": "Огонь"
     }
   ],
   "category_id": [
