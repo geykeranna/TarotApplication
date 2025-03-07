@@ -4,7 +4,6 @@ import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.flowlayout.SizeMode
 import android.annotation.SuppressLint
-import androidx.compose.animation.core.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -36,6 +35,7 @@ import ru.diploma.tarotapplication.ui.components.TopBar
 import ru.diploma.tarotapplication.ui.detailcard.items.CardInfoShortItems
 import ru.diploma.tarotapplication.ui.theme.AccentColor
 import ru.diploma.tarotapplication.ui.theme.BackgroundColor
+import ru.diploma.tarotapplication.ui.utils.Constants.ASSETS_URL
 import javax.inject.Inject
 
 @SuppressLint("DiscouragedApi")
@@ -93,7 +93,7 @@ fun DetailCardScreen(
 
             ) {
                 AsyncImage(
-                    model = "file:///android_asset/${card.card_image}.jpg",
+                    model = "${ASSETS_URL}/${card.card_image}.jpg",
                     contentDescription = null,
                     modifier = Modifier
                         .padding(all = 10.dp))

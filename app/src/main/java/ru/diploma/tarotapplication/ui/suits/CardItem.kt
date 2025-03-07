@@ -14,6 +14,7 @@ import coil.compose.AsyncImage
 import ru.diploma.tarotapplication.data.model.InfoCard
 import ru.diploma.tarotapplication.ui.detailcard.DetailCardScreenFactory
 import ru.diploma.tarotapplication.ui.theme.fontFamily
+import ru.diploma.tarotapplication.ui.utils.Constants.ASSETS_URL
 
 @Composable
 fun CardItem(
@@ -22,7 +23,7 @@ fun CardItem(
 ) {
     Column(
         modifier = Modifier
-            .height(200.dp)
+            .height(220.dp)
             .width(80.dp)
             .clickable {
                 navController.navigate(DetailCardScreenFactory.route + "/${item.card_id}")
@@ -35,7 +36,7 @@ fun CardItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(160.dp),
-            model = "file:///android_asset/${item.img_id}.jpg",
+            model = "${ASSETS_URL}/${item.img_id}.jpg",
             contentDescription = null)
         Text(
             modifier = Modifier.padding(horizontal = 1.dp),
